@@ -1,0 +1,17 @@
+# Everything needed to run the data pipeline, train models and run the tests.
+# Install this locally; production installs requirements.txt only.
+-r requirements.txt
+
+# Training + explainability. `shap` pulls in numba + llvmlite (~150 MB), which
+# is why it is kept out of the serving bundle: ml/explain.py computes exact
+# SHAP values for linear models in numpy instead.
+xgboost>=2.0
+shap>=0.45
+matplotlib>=3.8
+
+# Local server
+uvicorn[standard]>=0.29
+
+# Tests
+pytest>=8.0
+httpx>=0.27

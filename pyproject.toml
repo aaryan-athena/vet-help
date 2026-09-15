@@ -1,0 +1,28 @@
+[project]
+name = "vetdx-api"
+version = "1.0.0"
+description = "VetDx — ML-driven early-warning triage for animals"
+requires-python = ">=3.10"
+
+# Kept in sync with requirements.txt (serving only). shap/xgboost/matplotlib are
+# training-only and live in requirements-dev.txt, so they never reach the
+# serverless bundle.
+dependencies = [
+    "fastapi>=0.110",
+    "pydantic>=2.6",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scikit-learn>=1.4",
+    "joblib>=1.3",
+]
+
+[tool.vercel]
+# The FastAPI app does not sit at one of the filenames Vercel auto-detects
+# (app.py / index.py / main.py at the root or in src/ or app/), so point at it
+# explicitly instead of restructuring the package.
+entrypoint = "backend.app.main:app"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --disable-warnings"
+filterwarnings = ["ignore::DeprecationWarning"]

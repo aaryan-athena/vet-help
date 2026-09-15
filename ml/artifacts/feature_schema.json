@@ -1,0 +1,1591 @@
+{
+  "version": 1,
+  "target_column": "Dangerous",
+  "target_kind": "risk",
+  "classes": [
+    "No",
+    "Yes"
+  ],
+  "fields": [
+    {
+      "name": "species",
+      "label": "Animal type",
+      "type": "select",
+      "required": true,
+      "options": [
+        {
+          "value": "birds",
+          "label": "Birds"
+        },
+        {
+          "value": "buffaloes",
+          "label": "Buffaloes"
+        },
+        {
+          "value": "cat",
+          "label": "Cat"
+        },
+        {
+          "value": "cattle",
+          "label": "Cattle"
+        },
+        {
+          "value": "chicken",
+          "label": "Chicken"
+        },
+        {
+          "value": "deer",
+          "label": "Deer"
+        },
+        {
+          "value": "dog",
+          "label": "Dog"
+        },
+        {
+          "value": "donkey",
+          "label": "Donkey"
+        },
+        {
+          "value": "duck",
+          "label": "Duck"
+        },
+        {
+          "value": "elephant",
+          "label": "Elephant"
+        },
+        {
+          "value": "fowl",
+          "label": "Fowl"
+        },
+        {
+          "value": "fox",
+          "label": "Fox"
+        },
+        {
+          "value": "goat",
+          "label": "Goat"
+        },
+        {
+          "value": "hamster",
+          "label": "Hamster"
+        },
+        {
+          "value": "horse",
+          "label": "Horse"
+        },
+        {
+          "value": "lion",
+          "label": "Lion"
+        },
+        {
+          "value": "monkey",
+          "label": "Monkey"
+        },
+        {
+          "value": "pig",
+          "label": "Pig"
+        },
+        {
+          "value": "rabbit",
+          "label": "Rabbit"
+        },
+        {
+          "value": "sheep",
+          "label": "Sheep"
+        },
+        {
+          "value": "tiger",
+          "label": "Tiger"
+        },
+        {
+          "value": "turtle",
+          "label": "Turtle"
+        }
+      ],
+      "allow_other": true,
+      "help": "Species recorded in the training data. Anything else is scored as 'other'."
+    },
+    {
+      "name": "symptoms",
+      "label": "Observed symptoms",
+      "type": "multiselect",
+      "required": true,
+      "min_items": 1,
+      "options": [
+        {
+          "value": "fever",
+          "label": "Fever",
+          "count": 284
+        },
+        {
+          "value": "loss of appetite",
+          "label": "Loss Of Appetite",
+          "count": 199
+        },
+        {
+          "value": "weight loss",
+          "label": "Weight Loss",
+          "count": 195
+        },
+        {
+          "value": "lethargy",
+          "label": "Lethargy",
+          "count": 184
+        },
+        {
+          "value": "diarrhea",
+          "label": "Diarrhea",
+          "count": 156
+        },
+        {
+          "value": "pain",
+          "label": "Pain",
+          "count": 155
+        },
+        {
+          "value": "coughing",
+          "label": "Coughing",
+          "count": 119
+        },
+        {
+          "value": "depression",
+          "label": "Depression",
+          "count": 86
+        },
+        {
+          "value": "vomiting",
+          "label": "Vomiting",
+          "count": 81
+        },
+        {
+          "value": "death",
+          "label": "Death",
+          "count": 80
+        },
+        {
+          "value": "difficulty in breathing",
+          "label": "Difficulty In Breathing",
+          "count": 67
+        },
+        {
+          "value": "nasal discharge",
+          "label": "Nasal Discharge",
+          "count": 67
+        },
+        {
+          "value": "lameness",
+          "label": "Lameness",
+          "count": 51
+        },
+        {
+          "value": "swelling",
+          "label": "Swelling",
+          "count": 50
+        },
+        {
+          "value": "sneezing",
+          "label": "Sneezing",
+          "count": 45
+        },
+        {
+          "value": "dehydration",
+          "label": "Dehydration",
+          "count": 32
+        },
+        {
+          "value": "dullness",
+          "label": "Dullness",
+          "count": 30
+        },
+        {
+          "value": "stumbling",
+          "label": "Stumbling",
+          "count": 28
+        },
+        {
+          "value": "anemia",
+          "label": "Anemia",
+          "count": 24
+        },
+        {
+          "value": "blindness",
+          "label": "Blindness",
+          "count": 24
+        },
+        {
+          "value": "drooling",
+          "label": "Drooling",
+          "count": 22
+        },
+        {
+          "value": "skin rashes",
+          "label": "Skin Rashes",
+          "count": 20
+        },
+        {
+          "value": "hair loss",
+          "label": "Hair Loss",
+          "count": 17
+        },
+        {
+          "value": "nausea",
+          "label": "Nausea",
+          "count": 15
+        },
+        {
+          "value": "jaundice",
+          "label": "Jaundice",
+          "count": 14
+        },
+        {
+          "value": "seizures",
+          "label": "Seizures",
+          "count": 13
+        },
+        {
+          "value": "chills",
+          "label": "Chills",
+          "count": 12
+        },
+        {
+          "value": "convulsion",
+          "label": "Convulsion",
+          "count": 12
+        },
+        {
+          "value": "abortion",
+          "label": "Abortion",
+          "count": 11
+        },
+        {
+          "value": "respiratory distress",
+          "label": "Respiratory Distress",
+          "count": 11
+        },
+        {
+          "value": "trembling",
+          "label": "Trembling",
+          "count": 11
+        },
+        {
+          "value": "pneumonia",
+          "label": "Pneumonia",
+          "count": 10
+        },
+        {
+          "value": "ruffled feathers",
+          "label": "Ruffled Feathers",
+          "count": 10
+        },
+        {
+          "value": "ataxia",
+          "label": "Ataxia",
+          "count": 9
+        },
+        {
+          "value": "change their normal behaviour",
+          "label": "Change Their Normal Behaviour",
+          "count": 9
+        },
+        {
+          "value": "facial swelling",
+          "label": "Facial Swelling",
+          "count": 9
+        },
+        {
+          "value": "bloody discharge",
+          "label": "Bloody Discharge",
+          "count": 8
+        },
+        {
+          "value": "colic",
+          "label": "Colic",
+          "count": 8
+        },
+        {
+          "value": "congestion",
+          "label": "Congestion",
+          "count": 8
+        },
+        {
+          "value": "facial edema",
+          "label": "Facial Edema",
+          "count": 8
+        },
+        {
+          "value": "lying down",
+          "label": "Lying Down",
+          "count": 8
+        },
+        {
+          "value": "seizuers",
+          "label": "Seizuers",
+          "count": 8
+        },
+        {
+          "value": "wheezing",
+          "label": "Wheezing",
+          "count": 8
+        },
+        {
+          "value": "abdominal pain",
+          "label": "Abdominal Pain",
+          "count": 7
+        },
+        {
+          "value": "bloody",
+          "label": "Bloody",
+          "count": 7
+        },
+        {
+          "value": "difficulty breating",
+          "label": "Difficulty Breating",
+          "count": 7
+        },
+        {
+          "value": "drooping ears",
+          "label": "Drooping Ears",
+          "count": 7
+        },
+        {
+          "value": "limping",
+          "label": "Limping",
+          "count": 7
+        },
+        {
+          "value": "loss of appettite",
+          "label": "Loss Of Appettite",
+          "count": 7
+        },
+        {
+          "value": "neurologic abnormalities",
+          "label": "Neurologic Abnormalities",
+          "count": 7
+        },
+        {
+          "value": "painfull",
+          "label": "Painfull",
+          "count": 7
+        },
+        {
+          "value": "stiffness",
+          "label": "Stiffness",
+          "count": 7
+        },
+        {
+          "value": "stop drinking",
+          "label": "Stop Drinking",
+          "count": 7
+        },
+        {
+          "value": "bottle jaw",
+          "label": "Bottle Jaw",
+          "count": 6
+        },
+        {
+          "value": "circling",
+          "label": "Circling",
+          "count": 6
+        },
+        {
+          "value": "constipation",
+          "label": "Constipation",
+          "count": 6
+        },
+        {
+          "value": "discharge",
+          "label": "Discharge",
+          "count": 6
+        },
+        {
+          "value": "discomfort",
+          "label": "Discomfort",
+          "count": 6
+        },
+        {
+          "value": "extending its neck",
+          "label": "Extending Its Neck",
+          "count": 6
+        },
+        {
+          "value": "eye redness",
+          "label": "Eye Redness",
+          "count": 6
+        },
+        {
+          "value": "gasping for air",
+          "label": "Gasping For Air",
+          "count": 6
+        },
+        {
+          "value": "heavy breathing",
+          "label": "Heavy Breathing",
+          "count": 6
+        },
+        {
+          "value": "lack of coordination",
+          "label": "Lack Of Coordination",
+          "count": 6
+        },
+        {
+          "value": "malpresentation",
+          "label": "Malpresentation",
+          "count": 6
+        },
+        {
+          "value": "mortality",
+          "label": "Mortality",
+          "count": 6
+        },
+        {
+          "value": "muscle aches",
+          "label": "Muscle Aches",
+          "count": 6
+        },
+        {
+          "value": "muscle pain",
+          "label": "Muscle Pain",
+          "count": 6
+        },
+        {
+          "value": "rapid pulse and heart rates",
+          "label": "Rapid Pulse And Heart Rates",
+          "count": 6
+        },
+        {
+          "value": "reduce growth",
+          "label": "Reduce Growth",
+          "count": 6
+        },
+        {
+          "value": "restlessness",
+          "label": "Restlessness",
+          "count": 6
+        },
+        {
+          "value": "scabs",
+          "label": "Scabs",
+          "count": 6
+        },
+        {
+          "value": "stomach cramps",
+          "label": "Stomach Cramps",
+          "count": 6
+        },
+        {
+          "value": "swollen abdomen",
+          "label": "Swollen Abdomen",
+          "count": 6
+        },
+        {
+          "value": "tenderness",
+          "label": "Tenderness",
+          "count": 6
+        },
+        {
+          "value": "upset stomach",
+          "label": "Upset Stomach",
+          "count": 6
+        },
+        {
+          "value": "urination problem",
+          "label": "Urination Problem",
+          "count": 6
+        },
+        {
+          "value": "fetopelvic dispropotion",
+          "label": "Fetopelvic Dispropotion",
+          "count": 5
+        },
+        {
+          "value": "heat",
+          "label": "Heat",
+          "count": 5
+        },
+        {
+          "value": "joint pain",
+          "label": "Joint Pain",
+          "count": 5
+        },
+        {
+          "value": "lesion",
+          "label": "Lesion",
+          "count": 5
+        },
+        {
+          "value": "lession on the skin",
+          "label": "Lession On The Skin",
+          "count": 5
+        },
+        {
+          "value": "skin issue",
+          "label": "Skin Issue",
+          "count": 5
+        },
+        {
+          "value": "swelling of face or leg",
+          "label": "Swelling Of Face Or Leg",
+          "count": 5
+        },
+        {
+          "value": "swelling on leg",
+          "label": "Swelling On Leg",
+          "count": 5
+        },
+        {
+          "value": "swollen lymph nodes",
+          "label": "Swollen Lymph Nodes",
+          "count": 5
+        },
+        {
+          "value": "uteria inertia",
+          "label": "Uteria Inertia",
+          "count": 5
+        },
+        {
+          "value": "abdominal discomfort",
+          "label": "Abdominal Discomfort",
+          "count": 4
+        },
+        {
+          "value": "behaviour change",
+          "label": "Behaviour Change",
+          "count": 4
+        },
+        {
+          "value": "chest pain",
+          "label": "Chest Pain",
+          "count": 4
+        },
+        {
+          "value": "crusty",
+          "label": "Crusty",
+          "count": 4
+        },
+        {
+          "value": "decrease appetite",
+          "label": "Decrease Appetite",
+          "count": 4
+        },
+        {
+          "value": "dejection",
+          "label": "Dejection",
+          "count": 4
+        },
+        {
+          "value": "difficulty in swallowing",
+          "label": "Difficulty In Swallowing",
+          "count": 4
+        },
+        {
+          "value": "discharge from eye",
+          "label": "Discharge From Eye",
+          "count": 4
+        },
+        {
+          "value": "distended stomach",
+          "label": "Distended Stomach",
+          "count": 4
+        },
+        {
+          "value": "droopy wings",
+          "label": "Droopy Wings",
+          "count": 4
+        },
+        {
+          "value": "edema in lower jaw",
+          "label": "Edema In Lower Jaw",
+          "count": 4
+        },
+        {
+          "value": "enteritis",
+          "label": "Enteritis",
+          "count": 4
+        },
+        {
+          "value": "epistaxis",
+          "label": "Epistaxis",
+          "count": 4
+        },
+        {
+          "value": "eye closed",
+          "label": "Eye Closed",
+          "count": 4
+        },
+        {
+          "value": "facial paralysis",
+          "label": "Facial Paralysis",
+          "count": 4
+        },
+        {
+          "value": "frequent eye infections",
+          "label": "Frequent Eye Infections",
+          "count": 4
+        },
+        {
+          "value": "halitosis",
+          "label": "Halitosis",
+          "count": 4
+        },
+        {
+          "value": "immediate death",
+          "label": "Immediate Death",
+          "count": 4
+        },
+        {
+          "value": "inability to stand",
+          "label": "Inability To Stand",
+          "count": 4
+        },
+        {
+          "value": "inappentence",
+          "label": "Inappentence",
+          "count": 4
+        },
+        {
+          "value": "incoordination",
+          "label": "Incoordination",
+          "count": 4
+        },
+        {
+          "value": "kid moratality",
+          "label": "Kid Moratality",
+          "count": 4
+        },
+        {
+          "value": "lacrimation",
+          "label": "Lacrimation",
+          "count": 4
+        },
+        {
+          "value": "los of the ability to walk",
+          "label": "Los Of The Ability To Walk",
+          "count": 4
+        },
+        {
+          "value": "loss of eat",
+          "label": "Loss Of Eat",
+          "count": 4
+        },
+        {
+          "value": "muscular spasms",
+          "label": "Muscular Spasms",
+          "count": 4
+        },
+        {
+          "value": "neck paralysis",
+          "label": "Neck Paralysis",
+          "count": 4
+        },
+        {
+          "value": "normal appetite",
+          "label": "Normal Appetite",
+          "count": 4
+        },
+        {
+          "value": "paralysis",
+          "label": "Paralysis",
+          "count": 4
+        },
+        {
+          "value": "paresis",
+          "label": "Paresis",
+          "count": 4
+        },
+        {
+          "value": "red skin",
+          "label": "Red Skin",
+          "count": 4
+        },
+        {
+          "value": "redness",
+          "label": "Redness",
+          "count": 4
+        },
+        {
+          "value": "shortness of breath",
+          "label": "Shortness Of Breath",
+          "count": 4
+        },
+        {
+          "value": "slow growth",
+          "label": "Slow Growth",
+          "count": 4
+        },
+        {
+          "value": "torticollis",
+          "label": "Torticollis",
+          "count": 4
+        },
+        {
+          "value": "tremor",
+          "label": "Tremor",
+          "count": 4
+        },
+        {
+          "value": "twisted neck",
+          "label": "Twisted Neck",
+          "count": 4
+        },
+        {
+          "value": "ulcer",
+          "label": "Ulcer",
+          "count": 4
+        },
+        {
+          "value": "underdeveloped muscles",
+          "label": "Underdeveloped Muscles",
+          "count": 4
+        },
+        {
+          "value": "urination",
+          "label": "Urination",
+          "count": 4
+        },
+        {
+          "value": "weakened legs",
+          "label": "Weakened Legs",
+          "count": 4
+        },
+        {
+          "value": "wool loss",
+          "label": "Wool Loss",
+          "count": 4
+        },
+        {
+          "value": "bloody drool",
+          "label": "Bloody Drool",
+          "count": 3
+        },
+        {
+          "value": "broken bones",
+          "label": "Broken Bones",
+          "count": 3
+        },
+        {
+          "value": "diarrhea with muscus",
+          "label": "Diarrhea With Muscus",
+          "count": 3
+        },
+        {
+          "value": "enlarged lymph nodes or swelling",
+          "label": "Enlarged Lymph Nodes Or Swelling",
+          "count": 3
+        },
+        {
+          "value": "eye and skin change",
+          "label": "Eye And Skin Change",
+          "count": 3
+        },
+        {
+          "value": "flatulence",
+          "label": "Flatulence",
+          "count": 3
+        },
+        {
+          "value": "greenish yellow nasal discharge",
+          "label": "Greenish Yellow Nasal Discharge",
+          "count": 3
+        },
+        {
+          "value": "hyperesthesia",
+          "label": "Hyperesthesia",
+          "count": 3
+        },
+        {
+          "value": "lack of pigmentation",
+          "label": "Lack Of Pigmentation",
+          "count": 3
+        },
+        {
+          "value": "lossened teeth",
+          "label": "Lossened Teeth",
+          "count": 3
+        },
+        {
+          "value": "pain on face",
+          "label": "Pain On Face",
+          "count": 3
+        },
+        {
+          "value": "strong cough",
+          "label": "Strong Cough",
+          "count": 3
+        },
+        {
+          "value": "tensemus",
+          "label": "Tensemus",
+          "count": 3
+        },
+        {
+          "value": "thrist and urination",
+          "label": "Thrist And Urination",
+          "count": 3
+        },
+        {
+          "value": "unable to eat",
+          "label": "Unable To Eat",
+          "count": 3
+        },
+        {
+          "value": "unable to exercise",
+          "label": "Unable To Exercise",
+          "count": 3
+        },
+        {
+          "value": "watery stool",
+          "label": "Watery Stool",
+          "count": 3
+        },
+        {
+          "value": "weekness in the back legs",
+          "label": "Weekness In The Back Legs",
+          "count": 3
+        }
+      ],
+      "allow_other": true,
+      "help": "Select every clinical sign you can observe. Unrecognised terms still count towards symptom burden."
+    }
+  ],
+  "symptom_vocabulary": [
+    {
+      "value": "fever",
+      "label": "Fever",
+      "count": 284
+    },
+    {
+      "value": "loss of appetite",
+      "label": "Loss Of Appetite",
+      "count": 199
+    },
+    {
+      "value": "weight loss",
+      "label": "Weight Loss",
+      "count": 195
+    },
+    {
+      "value": "lethargy",
+      "label": "Lethargy",
+      "count": 184
+    },
+    {
+      "value": "diarrhea",
+      "label": "Diarrhea",
+      "count": 156
+    },
+    {
+      "value": "pain",
+      "label": "Pain",
+      "count": 155
+    },
+    {
+      "value": "coughing",
+      "label": "Coughing",
+      "count": 119
+    },
+    {
+      "value": "depression",
+      "label": "Depression",
+      "count": 86
+    },
+    {
+      "value": "vomiting",
+      "label": "Vomiting",
+      "count": 81
+    },
+    {
+      "value": "death",
+      "label": "Death",
+      "count": 80
+    },
+    {
+      "value": "difficulty in breathing",
+      "label": "Difficulty In Breathing",
+      "count": 67
+    },
+    {
+      "value": "nasal discharge",
+      "label": "Nasal Discharge",
+      "count": 67
+    },
+    {
+      "value": "lameness",
+      "label": "Lameness",
+      "count": 51
+    },
+    {
+      "value": "swelling",
+      "label": "Swelling",
+      "count": 50
+    },
+    {
+      "value": "sneezing",
+      "label": "Sneezing",
+      "count": 45
+    },
+    {
+      "value": "dehydration",
+      "label": "Dehydration",
+      "count": 32
+    },
+    {
+      "value": "dullness",
+      "label": "Dullness",
+      "count": 30
+    },
+    {
+      "value": "stumbling",
+      "label": "Stumbling",
+      "count": 28
+    },
+    {
+      "value": "anemia",
+      "label": "Anemia",
+      "count": 24
+    },
+    {
+      "value": "blindness",
+      "label": "Blindness",
+      "count": 24
+    },
+    {
+      "value": "drooling",
+      "label": "Drooling",
+      "count": 22
+    },
+    {
+      "value": "skin rashes",
+      "label": "Skin Rashes",
+      "count": 20
+    },
+    {
+      "value": "hair loss",
+      "label": "Hair Loss",
+      "count": 17
+    },
+    {
+      "value": "nausea",
+      "label": "Nausea",
+      "count": 15
+    },
+    {
+      "value": "jaundice",
+      "label": "Jaundice",
+      "count": 14
+    },
+    {
+      "value": "seizures",
+      "label": "Seizures",
+      "count": 13
+    },
+    {
+      "value": "chills",
+      "label": "Chills",
+      "count": 12
+    },
+    {
+      "value": "convulsion",
+      "label": "Convulsion",
+      "count": 12
+    },
+    {
+      "value": "abortion",
+      "label": "Abortion",
+      "count": 11
+    },
+    {
+      "value": "respiratory distress",
+      "label": "Respiratory Distress",
+      "count": 11
+    },
+    {
+      "value": "trembling",
+      "label": "Trembling",
+      "count": 11
+    },
+    {
+      "value": "pneumonia",
+      "label": "Pneumonia",
+      "count": 10
+    },
+    {
+      "value": "ruffled feathers",
+      "label": "Ruffled Feathers",
+      "count": 10
+    },
+    {
+      "value": "ataxia",
+      "label": "Ataxia",
+      "count": 9
+    },
+    {
+      "value": "change their normal behaviour",
+      "label": "Change Their Normal Behaviour",
+      "count": 9
+    },
+    {
+      "value": "facial swelling",
+      "label": "Facial Swelling",
+      "count": 9
+    },
+    {
+      "value": "bloody discharge",
+      "label": "Bloody Discharge",
+      "count": 8
+    },
+    {
+      "value": "colic",
+      "label": "Colic",
+      "count": 8
+    },
+    {
+      "value": "congestion",
+      "label": "Congestion",
+      "count": 8
+    },
+    {
+      "value": "facial edema",
+      "label": "Facial Edema",
+      "count": 8
+    },
+    {
+      "value": "lying down",
+      "label": "Lying Down",
+      "count": 8
+    },
+    {
+      "value": "seizuers",
+      "label": "Seizuers",
+      "count": 8
+    },
+    {
+      "value": "wheezing",
+      "label": "Wheezing",
+      "count": 8
+    },
+    {
+      "value": "abdominal pain",
+      "label": "Abdominal Pain",
+      "count": 7
+    },
+    {
+      "value": "bloody",
+      "label": "Bloody",
+      "count": 7
+    },
+    {
+      "value": "difficulty breating",
+      "label": "Difficulty Breating",
+      "count": 7
+    },
+    {
+      "value": "drooping ears",
+      "label": "Drooping Ears",
+      "count": 7
+    },
+    {
+      "value": "limping",
+      "label": "Limping",
+      "count": 7
+    },
+    {
+      "value": "loss of appettite",
+      "label": "Loss Of Appettite",
+      "count": 7
+    },
+    {
+      "value": "neurologic abnormalities",
+      "label": "Neurologic Abnormalities",
+      "count": 7
+    },
+    {
+      "value": "painfull",
+      "label": "Painfull",
+      "count": 7
+    },
+    {
+      "value": "stiffness",
+      "label": "Stiffness",
+      "count": 7
+    },
+    {
+      "value": "stop drinking",
+      "label": "Stop Drinking",
+      "count": 7
+    },
+    {
+      "value": "bottle jaw",
+      "label": "Bottle Jaw",
+      "count": 6
+    },
+    {
+      "value": "circling",
+      "label": "Circling",
+      "count": 6
+    },
+    {
+      "value": "constipation",
+      "label": "Constipation",
+      "count": 6
+    },
+    {
+      "value": "discharge",
+      "label": "Discharge",
+      "count": 6
+    },
+    {
+      "value": "discomfort",
+      "label": "Discomfort",
+      "count": 6
+    },
+    {
+      "value": "extending its neck",
+      "label": "Extending Its Neck",
+      "count": 6
+    },
+    {
+      "value": "eye redness",
+      "label": "Eye Redness",
+      "count": 6
+    },
+    {
+      "value": "gasping for air",
+      "label": "Gasping For Air",
+      "count": 6
+    },
+    {
+      "value": "heavy breathing",
+      "label": "Heavy Breathing",
+      "count": 6
+    },
+    {
+      "value": "lack of coordination",
+      "label": "Lack Of Coordination",
+      "count": 6
+    },
+    {
+      "value": "malpresentation",
+      "label": "Malpresentation",
+      "count": 6
+    },
+    {
+      "value": "mortality",
+      "label": "Mortality",
+      "count": 6
+    },
+    {
+      "value": "muscle aches",
+      "label": "Muscle Aches",
+      "count": 6
+    },
+    {
+      "value": "muscle pain",
+      "label": "Muscle Pain",
+      "count": 6
+    },
+    {
+      "value": "rapid pulse and heart rates",
+      "label": "Rapid Pulse And Heart Rates",
+      "count": 6
+    },
+    {
+      "value": "reduce growth",
+      "label": "Reduce Growth",
+      "count": 6
+    },
+    {
+      "value": "restlessness",
+      "label": "Restlessness",
+      "count": 6
+    },
+    {
+      "value": "scabs",
+      "label": "Scabs",
+      "count": 6
+    },
+    {
+      "value": "stomach cramps",
+      "label": "Stomach Cramps",
+      "count": 6
+    },
+    {
+      "value": "swollen abdomen",
+      "label": "Swollen Abdomen",
+      "count": 6
+    },
+    {
+      "value": "tenderness",
+      "label": "Tenderness",
+      "count": 6
+    },
+    {
+      "value": "upset stomach",
+      "label": "Upset Stomach",
+      "count": 6
+    },
+    {
+      "value": "urination problem",
+      "label": "Urination Problem",
+      "count": 6
+    },
+    {
+      "value": "fetopelvic dispropotion",
+      "label": "Fetopelvic Dispropotion",
+      "count": 5
+    },
+    {
+      "value": "heat",
+      "label": "Heat",
+      "count": 5
+    },
+    {
+      "value": "joint pain",
+      "label": "Joint Pain",
+      "count": 5
+    },
+    {
+      "value": "lesion",
+      "label": "Lesion",
+      "count": 5
+    },
+    {
+      "value": "lession on the skin",
+      "label": "Lession On The Skin",
+      "count": 5
+    },
+    {
+      "value": "skin issue",
+      "label": "Skin Issue",
+      "count": 5
+    },
+    {
+      "value": "swelling of face or leg",
+      "label": "Swelling Of Face Or Leg",
+      "count": 5
+    },
+    {
+      "value": "swelling on leg",
+      "label": "Swelling On Leg",
+      "count": 5
+    },
+    {
+      "value": "swollen lymph nodes",
+      "label": "Swollen Lymph Nodes",
+      "count": 5
+    },
+    {
+      "value": "uteria inertia",
+      "label": "Uteria Inertia",
+      "count": 5
+    },
+    {
+      "value": "abdominal discomfort",
+      "label": "Abdominal Discomfort",
+      "count": 4
+    },
+    {
+      "value": "behaviour change",
+      "label": "Behaviour Change",
+      "count": 4
+    },
+    {
+      "value": "chest pain",
+      "label": "Chest Pain",
+      "count": 4
+    },
+    {
+      "value": "crusty",
+      "label": "Crusty",
+      "count": 4
+    },
+    {
+      "value": "decrease appetite",
+      "label": "Decrease Appetite",
+      "count": 4
+    },
+    {
+      "value": "dejection",
+      "label": "Dejection",
+      "count": 4
+    },
+    {
+      "value": "difficulty in swallowing",
+      "label": "Difficulty In Swallowing",
+      "count": 4
+    },
+    {
+      "value": "discharge from eye",
+      "label": "Discharge From Eye",
+      "count": 4
+    },
+    {
+      "value": "distended stomach",
+      "label": "Distended Stomach",
+      "count": 4
+    },
+    {
+      "value": "droopy wings",
+      "label": "Droopy Wings",
+      "count": 4
+    },
+    {
+      "value": "edema in lower jaw",
+      "label": "Edema In Lower Jaw",
+      "count": 4
+    },
+    {
+      "value": "enteritis",
+      "label": "Enteritis",
+      "count": 4
+    },
+    {
+      "value": "epistaxis",
+      "label": "Epistaxis",
+      "count": 4
+    },
+    {
+      "value": "eye closed",
+      "label": "Eye Closed",
+      "count": 4
+    },
+    {
+      "value": "facial paralysis",
+      "label": "Facial Paralysis",
+      "count": 4
+    },
+    {
+      "value": "frequent eye infections",
+      "label": "Frequent Eye Infections",
+      "count": 4
+    },
+    {
+      "value": "halitosis",
+      "label": "Halitosis",
+      "count": 4
+    },
+    {
+      "value": "immediate death",
+      "label": "Immediate Death",
+      "count": 4
+    },
+    {
+      "value": "inability to stand",
+      "label": "Inability To Stand",
+      "count": 4
+    },
+    {
+      "value": "inappentence",
+      "label": "Inappentence",
+      "count": 4
+    },
+    {
+      "value": "incoordination",
+      "label": "Incoordination",
+      "count": 4
+    },
+    {
+      "value": "kid moratality",
+      "label": "Kid Moratality",
+      "count": 4
+    },
+    {
+      "value": "lacrimation",
+      "label": "Lacrimation",
+      "count": 4
+    },
+    {
+      "value": "los of the ability to walk",
+      "label": "Los Of The Ability To Walk",
+      "count": 4
+    },
+    {
+      "value": "loss of eat",
+      "label": "Loss Of Eat",
+      "count": 4
+    },
+    {
+      "value": "muscular spasms",
+      "label": "Muscular Spasms",
+      "count": 4
+    },
+    {
+      "value": "neck paralysis",
+      "label": "Neck Paralysis",
+      "count": 4
+    },
+    {
+      "value": "normal appetite",
+      "label": "Normal Appetite",
+      "count": 4
+    },
+    {
+      "value": "paralysis",
+      "label": "Paralysis",
+      "count": 4
+    },
+    {
+      "value": "paresis",
+      "label": "Paresis",
+      "count": 4
+    },
+    {
+      "value": "red skin",
+      "label": "Red Skin",
+      "count": 4
+    },
+    {
+      "value": "redness",
+      "label": "Redness",
+      "count": 4
+    },
+    {
+      "value": "shortness of breath",
+      "label": "Shortness Of Breath",
+      "count": 4
+    },
+    {
+      "value": "slow growth",
+      "label": "Slow Growth",
+      "count": 4
+    },
+    {
+      "value": "torticollis",
+      "label": "Torticollis",
+      "count": 4
+    },
+    {
+      "value": "tremor",
+      "label": "Tremor",
+      "count": 4
+    },
+    {
+      "value": "twisted neck",
+      "label": "Twisted Neck",
+      "count": 4
+    },
+    {
+      "value": "ulcer",
+      "label": "Ulcer",
+      "count": 4
+    },
+    {
+      "value": "underdeveloped muscles",
+      "label": "Underdeveloped Muscles",
+      "count": 4
+    },
+    {
+      "value": "urination",
+      "label": "Urination",
+      "count": 4
+    },
+    {
+      "value": "weakened legs",
+      "label": "Weakened Legs",
+      "count": 4
+    },
+    {
+      "value": "wool loss",
+      "label": "Wool Loss",
+      "count": 4
+    },
+    {
+      "value": "bloody drool",
+      "label": "Bloody Drool",
+      "count": 3
+    },
+    {
+      "value": "broken bones",
+      "label": "Broken Bones",
+      "count": 3
+    },
+    {
+      "value": "diarrhea with muscus",
+      "label": "Diarrhea With Muscus",
+      "count": 3
+    },
+    {
+      "value": "enlarged lymph nodes or swelling",
+      "label": "Enlarged Lymph Nodes Or Swelling",
+      "count": 3
+    },
+    {
+      "value": "eye and skin change",
+      "label": "Eye And Skin Change",
+      "count": 3
+    },
+    {
+      "value": "flatulence",
+      "label": "Flatulence",
+      "count": 3
+    },
+    {
+      "value": "greenish yellow nasal discharge",
+      "label": "Greenish Yellow Nasal Discharge",
+      "count": 3
+    },
+    {
+      "value": "hyperesthesia",
+      "label": "Hyperesthesia",
+      "count": 3
+    },
+    {
+      "value": "lack of pigmentation",
+      "label": "Lack Of Pigmentation",
+      "count": 3
+    },
+    {
+      "value": "lossened teeth",
+      "label": "Lossened Teeth",
+      "count": 3
+    },
+    {
+      "value": "pain on face",
+      "label": "Pain On Face",
+      "count": 3
+    },
+    {
+      "value": "strong cough",
+      "label": "Strong Cough",
+      "count": 3
+    },
+    {
+      "value": "tensemus",
+      "label": "Tensemus",
+      "count": 3
+    },
+    {
+      "value": "thrist and urination",
+      "label": "Thrist And Urination",
+      "count": 3
+    },
+    {
+      "value": "unable to eat",
+      "label": "Unable To Eat",
+      "count": 3
+    },
+    {
+      "value": "unable to exercise",
+      "label": "Unable To Exercise",
+      "count": 3
+    },
+    {
+      "value": "watery stool",
+      "label": "Watery Stool",
+      "count": 3
+    },
+    {
+      "value": "weekness in the back legs",
+      "label": "Weekness In The Back Legs",
+      "count": 3
+    }
+  ],
+  "binary_columns": [],
+  "fields_absent_from_dataset": [
+    "breed",
+    "age",
+    "weight",
+    "symptom_duration"
+  ],
+  "n_features": 196,
+  "disclaimer": "VetDx is a triage and decision-support aid, not a diagnostic tool. Its predictions are statistical associations learned from a small, noisy, publicly sourced dataset and are not a substitute for examination and diagnosis by a qualified veterinarian. Always seek professional care for a sick animal."
+}

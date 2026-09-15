@@ -1,0 +1,83 @@
+{
+  "model_name": "logistic_regression",
+  "trained_at": "2026-09-15T08:25:12+00:00",
+  "target_column": "Dangerous",
+  "target_kind": "risk",
+  "classes": [
+    "No",
+    "Yes"
+  ],
+  "n_features": 196,
+  "n_training_rows": 672,
+  "selection_metric": "macro_f1",
+  "test_metrics": {
+    "accuracy": 0.9704,
+    "macro_f1": 0.7146,
+    "weighted_f1": 0.972,
+    "balanced_accuracy": 0.7409,
+    "roc_auc": 0.9758
+  },
+  "class_counts": {
+    "Yes": 821,
+    "No": 20
+  },
+  "comparison_summary": [
+    {
+      "model": "majority_baseline",
+      "val_accuracy": 0.9778,
+      "val_macro_f1": 0.4944,
+      "val_balanced_accuracy": 0.5,
+      "tuned_params": null
+    },
+    {
+      "model": "logistic_regression",
+      "val_accuracy": 0.9926,
+      "val_macro_f1": 0.9267,
+      "val_balanced_accuracy": 0.9962,
+      "tuned_params": {
+        "clf__C": "0.003"
+      }
+    },
+    {
+      "model": "naive_bayes",
+      "val_accuracy": 0.9778,
+      "val_macro_f1": 0.4944,
+      "val_balanced_accuracy": 0.5,
+      "tuned_params": {
+        "alpha": "0.5"
+      }
+    },
+    {
+      "model": "random_forest",
+      "val_accuracy": 0.9704,
+      "val_macro_f1": 0.4925,
+      "val_balanced_accuracy": 0.4962,
+      "tuned_params": {
+        "max_depth": "6",
+        "min_samples_leaf": "2"
+      }
+    },
+    {
+      "model": "neural_net",
+      "val_accuracy": 0.963,
+      "val_macro_f1": 0.4906,
+      "val_balanced_accuracy": 0.4924,
+      "tuned_params": {
+        "clf__alpha": "0.01",
+        "clf__hidden_layer_sizes": "(32,)"
+      }
+    },
+    {
+      "model": "xgboost",
+      "val_accuracy": 0.9852,
+      "val_macro_f1": 0.7462,
+      "val_balanced_accuracy": 0.6667,
+      "tuned_params": {
+        "learning_rate": "0.05",
+        "max_depth": "3",
+        "n_estimators": "400"
+      }
+    }
+  ],
+  "disclaimer": "VetDx is a triage and decision-support aid, not a diagnostic tool. Its predictions are statistical associations learned from a small, noisy, publicly sourced dataset and are not a substitute for examination and diagnosis by a qualified veterinarian. Always seek professional care for a sick animal."
+}

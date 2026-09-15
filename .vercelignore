@@ -1,0 +1,18 @@
+# Applies to the API project (Root Directory = repository root).
+# Keeps the uploaded source small; the function bundle itself is trimmed by
+# "excludeFiles" in vercel.json.
+#
+# NOTE: `frontend/` is deliberately NOT listed here. The frontend is a separate
+# Vercel project with Root Directory = frontend, and excluding it at the repo
+# root risks starving that build of its own source. vercel.json already keeps
+# frontend/** out of the Python function bundle, which is what the size limit
+# actually cares about.
+tests/
+docs/
+reports/
+data/processed/
+.venv/
+venv/
+node_modules/
+*.png
+*.log

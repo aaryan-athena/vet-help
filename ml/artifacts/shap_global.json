@@ -1,0 +1,310 @@
+{
+  "method": "shap_linear_exact",
+  "n_background_rows": 300,
+  "classes": [
+    "No",
+    "Yes"
+  ],
+  "features": [
+    {
+      "feature": "species__buffaloes",
+      "label": "Species: Buffaloes",
+      "importance": 0.161986
+    },
+    {
+      "feature": "sym__lethargy",
+      "label": "Symptom: Lethargy",
+      "importance": 0.078782
+    },
+    {
+      "feature": "species__chicken",
+      "label": "Species: Chicken",
+      "importance": 0.069667
+    },
+    {
+      "feature": "pair__pain+weight loss",
+      "label": "Symptom pair: Pain + Weight Loss",
+      "importance": 0.048786
+    },
+    {
+      "feature": "sym__fever",
+      "label": "Symptom: Fever",
+      "importance": 0.048066
+    },
+    {
+      "feature": "pair__diarrhea+loss of appetite",
+      "label": "Symptom pair: Diarrhea + Loss Of Appetite",
+      "importance": 0.046598
+    },
+    {
+      "feature": "sym__nasal discharge",
+      "label": "Symptom: Nasal Discharge",
+      "importance": 0.041331
+    },
+    {
+      "feature": "pair__diarrhea+lethargy",
+      "label": "Symptom pair: Diarrhea + Lethargy",
+      "importance": 0.039529
+    },
+    {
+      "feature": "sym__skin rashes",
+      "label": "Symptom: Skin Rashes",
+      "importance": 0.037588
+    },
+    {
+      "feature": "species__sheep",
+      "label": "Species: Sheep",
+      "importance": 0.036013
+    },
+    {
+      "feature": "sym__epistaxis",
+      "label": "Symptom: Epistaxis",
+      "importance": 0.035929
+    },
+    {
+      "feature": "pair__fever+pain",
+      "label": "Symptom pair: Fever + Pain",
+      "importance": 0.032754
+    },
+    {
+      "feature": "sym__vomiting",
+      "label": "Symptom: Vomiting",
+      "importance": 0.031195
+    },
+    {
+      "feature": "sym__death",
+      "label": "Symptom: Death",
+      "importance": 0.030076
+    },
+    {
+      "feature": "pair__fever+weight loss",
+      "label": "Symptom pair: Fever + Weight Loss",
+      "importance": 0.030057
+    },
+    {
+      "feature": "species__monkey",
+      "label": "Species: Monkey",
+      "importance": 0.028895
+    },
+    {
+      "feature": "pair__fever+lethargy",
+      "label": "Symptom pair: Fever + Lethargy",
+      "importance": 0.02589
+    },
+    {
+      "feature": "species__pig",
+      "label": "Species: Pig",
+      "importance": 0.024873
+    },
+    {
+      "feature": "sym__diarrhea",
+      "label": "Symptom: Diarrhea",
+      "importance": 0.024533
+    },
+    {
+      "feature": "pair__lethargy+weight loss",
+      "label": "Symptom pair: Lethargy + Weight Loss",
+      "importance": 0.023385
+    },
+    {
+      "feature": "sym__dehydration",
+      "label": "Symptom: Dehydration",
+      "importance": 0.02315
+    },
+    {
+      "feature": "pair__fever+loss of appetite",
+      "label": "Symptom pair: Fever + Loss Of Appetite",
+      "importance": 0.02259
+    },
+    {
+      "feature": "species__fowl",
+      "label": "Species: Fowl",
+      "importance": 0.022462
+    },
+    {
+      "feature": "species__elephant",
+      "label": "Species: Elephant",
+      "importance": 0.02146
+    },
+    {
+      "feature": "species__duck",
+      "label": "Species: Duck",
+      "importance": 0.021418
+    },
+    {
+      "feature": "pair__diarrhea+fever",
+      "label": "Symptom pair: Diarrhea + Fever",
+      "importance": 0.020928
+    },
+    {
+      "feature": "sym__difficulty in breathing",
+      "label": "Symptom: Difficulty In Breathing",
+      "importance": 0.019969
+    },
+    {
+      "feature": "n_symptoms",
+      "label": "Number of symptoms reported",
+      "importance": 0.01922
+    },
+    {
+      "feature": "pair__diarrhea+vomiting",
+      "label": "Symptom pair: Diarrhea + Vomiting",
+      "importance": 0.019059
+    },
+    {
+      "feature": "pair__coughing+fever",
+      "label": "Symptom pair: Coughing + Fever",
+      "importance": 0.018756
+    },
+    {
+      "feature": "sym__lameness",
+      "label": "Symptom: Lameness",
+      "importance": 0.018492
+    },
+    {
+      "feature": "species__birds",
+      "label": "Species: Birds",
+      "importance": 0.01845
+    },
+    {
+      "feature": "sym__depression",
+      "label": "Symptom: Depression",
+      "importance": 0.018077
+    },
+    {
+      "feature": "sym__swelling",
+      "label": "Symptom: Swelling",
+      "importance": 0.017142
+    },
+    {
+      "feature": "pair__depression+fever",
+      "label": "Symptom pair: Depression + Fever",
+      "importance": 0.016767
+    },
+    {
+      "feature": "pair__coughing+difficulty in breathing",
+      "label": "Symptom pair: Coughing + Difficulty In Breathing",
+      "importance": 0.015912
+    },
+    {
+      "feature": "pair__coughing+weight loss",
+      "label": "Symptom pair: Coughing + Weight Loss",
+      "importance": 0.014295
+    },
+    {
+      "feature": "sym__heavy breathing",
+      "label": "Symptom: Heavy Breathing",
+      "importance": 0.013972
+    },
+    {
+      "feature": "sym__anemia",
+      "label": "Symptom: Anemia",
+      "importance": 0.013581
+    },
+    {
+      "feature": "sym__dejection",
+      "label": "Symptom: Dejection",
+      "importance": 0.013518
+    },
+    {
+      "feature": "sym__ruffled feathers",
+      "label": "Symptom: Ruffled Feathers",
+      "importance": 0.013437
+    },
+    {
+      "feature": "pair__coughing+lethargy",
+      "label": "Symptom pair: Coughing + Lethargy",
+      "importance": 0.013231
+    },
+    {
+      "feature": "sym__blindness",
+      "label": "Symptom: Blindness",
+      "importance": 0.012937
+    },
+    {
+      "feature": "pair__difficulty in breathing+fever",
+      "label": "Symptom pair: Difficulty In Breathing + Fever",
+      "importance": 0.012936
+    },
+    {
+      "feature": "sym__lacrimation",
+      "label": "Symptom: Lacrimation",
+      "importance": 0.012877
+    },
+    {
+      "feature": "sym__facial swelling",
+      "label": "Symptom: Facial Swelling",
+      "importance": 0.012874
+    },
+    {
+      "feature": "pair__lethargy+loss of appetite",
+      "label": "Symptom pair: Lethargy + Loss Of Appetite",
+      "importance": 0.012611
+    },
+    {
+      "feature": "n_rare_symptoms",
+      "label": "Number of uncommon symptoms reported",
+      "importance": 0.01205
+    },
+    {
+      "feature": "species__donkey",
+      "label": "Species: Donkey",
+      "importance": 0.012009
+    },
+    {
+      "feature": "species__cat",
+      "label": "Species: Cat",
+      "importance": 0.011718
+    },
+    {
+      "feature": "pair__depression+loss of appetite",
+      "label": "Symptom pair: Depression + Loss Of Appetite",
+      "importance": 0.011614
+    },
+    {
+      "feature": "sym__neck paralysis",
+      "label": "Symptom: Neck Paralysis",
+      "importance": 0.011529
+    },
+    {
+      "feature": "species__dog",
+      "label": "Species: Dog",
+      "importance": 0.01152
+    },
+    {
+      "feature": "sym__lesion",
+      "label": "Symptom: Lesion",
+      "importance": 0.011235
+    },
+    {
+      "feature": "sym__dullness",
+      "label": "Symptom: Dullness",
+      "importance": 0.010867
+    },
+    {
+      "feature": "pair__coughing+loss of appetite",
+      "label": "Symptom pair: Coughing + Loss Of Appetite",
+      "importance": 0.010858
+    },
+    {
+      "feature": "species__cattle",
+      "label": "Species: Cattle",
+      "importance": 0.010651
+    },
+    {
+      "feature": "species__goat",
+      "label": "Species: Goat",
+      "importance": 0.010048
+    },
+    {
+      "feature": "pair__diarrhea+weight loss",
+      "label": "Symptom pair: Diarrhea + Weight Loss",
+      "importance": 0.009388
+    },
+    {
+      "feature": "pair__death+fever",
+      "label": "Symptom pair: Death + Fever",
+      "importance": 0.009345
+    }
+  ]
+}

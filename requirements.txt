@@ -1,0 +1,8 @@
+# Runtime dependencies for SERVING the API (what Vercel installs).
+# Deliberately excludes shap/xgboost/matplotlib -- see requirements-dev.txt.
+fastapi>=0.110
+pydantic>=2.6
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.4
+joblib>=1.3

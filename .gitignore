@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Coverage / test output
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Logs
+*.log
+
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# Local env files -- ignore every variant, at any depth, EXCEPT the committed
+# templates. Covers .env.production / .env.development.local / etc., which are
+# exactly where an API key would end up by accident.
+.env
+.env.*
+!.env.example
+!.env*.example
+
+# Vercel CLI
+.vercel/
+
+# Regenerable pipeline outputs
+data/processed/*
+!data/processed/.gitkeep
+reports/*
+!reports/.gitkeep
+mlruns/
+
+# --- Deliberately TRACKED ---------------------------------------------------
+# ml/artifacts/ is committed in full, model.joblib included (~24 KB; the whole
+# directory is ~92 KB). Vercel builds from the git repo and there is no training
+# step in the build, so a committed model is the only way the deployed function
+# can find one. The JSON artifacts also let the repo document what is deployed
+# without a retrain.
+#
+# data/data.csv (64 KB) is committed so the pipeline is reproducible from a
+# clone. Remove it here if your dataset is private or licensed.
+#
+# If you move to a large model -- a tuned random forest can be tens of MB --
+# stop tracking the binary and fetch it at build time or from object storage:
+#   ml/artifacts/*.joblib
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
