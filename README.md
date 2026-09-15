@@ -167,6 +167,7 @@ Interactive docs at <http://localhost:8000/docs>.
 
 | Endpoint | What it does |
 |---|---|
+| `GET /` | service descriptor — confirms the API is up and lists the routes |
 | `GET /health` | liveness plus whether a model is loaded |
 | `GET /schema` | field definitions, symptom vocabulary and valid values, so the form is generated not hardcoded |
 | `GET /model-info` | deployed model, metrics, comparison table, confusion matrix, global importance |
@@ -181,6 +182,17 @@ curl -X POST http://localhost:8000/predict \
 Malformed input returns `422` with a per-field reason. If the API is started
 before training, `/health` reports `degraded` and the other routes return `503`
 with instructions rather than crashing.
+
+Every route is also served under an `/api` prefix (`/api/health`,
+`/api/predict`, …), so the API works whether it has its own domain or sits
+behind an `/api` path — and `VITE_API_BASE` is forgiving about a trailing
+`/api`.
+
+> **`{"detail":"Not Found"}` in the browser?** That is FastAPI's 404: the
+> backend is running, the URL just has no route. The API root now answers with a
+> service descriptor instead, so if you still see it, check the path — and
+> remember the API is not the web interface, which is the separate frontend
+> deployment.
 
 ### 5. Run the frontend
 

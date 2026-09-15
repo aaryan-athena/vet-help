@@ -12,7 +12,7 @@ import logging
 import time
 import uuid
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import APIRouter, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -83,6 +83,13 @@ async def log_requests(request: Request, call_next):
     return response
 
 
+# Routes live on a router, which is then mounted twice: at the root (the
+# two-project Vercel setup, where the API has its own domain) and under /api
+# (a single-domain setup, or a frontend whose VITE_API_BASE already ends in
+# /api). Serving both spellings removes an entire category of 404.
+router = APIRouter()
+
+
 def _service() -> ModelService:
     try:
         return get_service()
@@ -99,7 +106,7 @@ def warm_up() -> None:
         logger.warning("starting without a model: %s", exc)
 
 
-@app.get("/health", response_model=HealthResponse, tags=["meta"])
+@router.get("/health", response_model=HealthResponse, tags=["meta"])
 def health() -> HealthResponse:
     try:
         service = get_service()
@@ -110,7 +117,7 @@ def health() -> HealthResponse:
     )
 
 
-@app.get(
+@router.get(
     "/schema",
     response_model=SchemaResponse,
     responses={503: {"model": ErrorResponse}},
@@ -121,13 +128,13 @@ def input_schema() -> dict:
     return _service().feature_schema
 
 
-@app.get("/model-info", responses={503: {"model": ErrorResponse}}, tags=["meta"])
+@router.get("/model-info", responses={503: {"model": ErrorResponse}}, tags=["meta"])
 def model_info() -> dict:
     """Deployed model, its evaluation metrics, and when it was trained."""
     return _service().info()
 
 
-@app.post(
+@router.post(
     "/predict",
     response_model=PredictResponse,
     responses={422: {"model": ErrorResponse}, 503: {"model": ErrorResponse}},
@@ -154,6 +161,46 @@ def predict(payload: PredictRequest, request: Request) -> dict:
         result["unrecognized_symptoms"],
     )
     return result
+
+
+@router.get("/", include_in_schema=False)
+def index() -> dict:
+    """Service descriptor.
+
+    Without this, hitting the API's root URL in a browser returns a bare
+    ``{"detail": "Not Found"}``, which reads like the backend is broken when it
+    is simply an API with no landing page. This is NOT the user interface --
+    that is the separate frontend deployment.
+    """
+    try:
+        service = get_service()
+        model = {"name": service.model_name, "loaded": True}
+    except ModelNotTrainedError as exc:
+        model = {"loaded": False, "detail": str(exc)}
+    return {
+        "service": "VetDx API",
+        "version": app.version,
+        "status": "running",
+        "note": (
+            "This is the JSON API, not the VetDx web interface. Open /docs for "
+            "interactive documentation."
+        ),
+        "model": model,
+        "endpoints": {
+            "health": "/health",
+            "schema": "/schema",
+            "model_info": "/model-info",
+            "predict": "POST /predict",
+            "docs": "/docs",
+        },
+        "disclaimer": config.DISCLAIMER,
+    }
+
+
+app.include_router(router)
+# Same routes under /api, so both deployment shapes work. Hidden from the
+# OpenAPI schema to keep /docs showing one canonical path per endpoint.
+app.include_router(router, prefix="/api", include_in_schema=False)
 
 
 @app.exception_handler(ModelNotTrainedError)

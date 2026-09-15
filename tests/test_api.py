@@ -162,3 +162,40 @@ def test_cors_headers_for_frontend_origin(client):
     )
     assert response.status_code == 200
     assert response.headers["access-control-allow-origin"] == config.CORS_ORIGINS[0]
+
+
+# ---------------------------------------------------------------------------
+# Routing: the API must not answer a browser with a bare {"detail":"Not Found"}
+# ---------------------------------------------------------------------------
+def test_root_serves_a_service_descriptor(client):
+    """Hitting the API root in a browser must not look like a broken backend."""
+    response = client.get("/")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["service"] == "VetDx API"
+    assert body["status"] == "running"
+    # It must say plainly that this is not the web interface.
+    assert "not the VetDx web interface" in body["note"]
+    assert set(body["endpoints"]) >= {"health", "schema", "model_info", "predict", "docs"}
+
+
+@pytest.mark.parametrize("path", ["/", "/health", "/schema", "/model-info"])
+def test_routes_are_served_under_the_api_prefix_too(client, path):
+    """Both deployment shapes work: own domain, or mounted under /api."""
+    prefixed = "/api" if path == "/" else f"/api{path}"
+    assert client.get(path).status_code == 200
+    assert client.get(prefixed).status_code == 200
+
+
+def test_predict_is_identical_under_both_prefixes(client):
+    payload = {"species": "dog", "symptoms": ["fever", "diarrhea"], "top_n": 2}
+    bare = client.post("/predict", json=payload)
+    prefixed = client.post("/api/predict", json=payload)
+    assert bare.status_code == prefixed.status_code == 200
+    assert bare.json()["predictions"] == prefixed.json()["predictions"]
+
+
+def test_unknown_paths_still_404(client):
+    """The /api mount must not turn every URL into a 200."""
+    assert client.get("/definitely-not-a-route").status_code == 404
+    assert client.get("/api/definitely-not-a-route").status_code == 404
