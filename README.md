@@ -398,10 +398,25 @@ New Project → same repo → **Root Directory: `frontend`**. Vercel detects Vit
 VITE_API_BASE = https://your-api.vercel.app
 ```
 
-No trailing slash, no `/api` suffix. **Vite inlines env vars at build time**, so
-setting this requires a redeploy to take effect — this is the single most common
-way this deployment goes wrong. If it is unset, the app falls back to `/api` on
-its own domain, gets a 404, and shows an error naming `VITE_API_BASE`.
+**Vite inlines env vars at build time**, so setting this requires a redeploy to
+take effect — the single most common way this deployment goes wrong. If it is
+unset, the app falls back to `/api` on its own domain, gets a 404, and shows an
+error naming `VITE_API_BASE`.
+
+Trailing slashes and an `/api` suffix are both tolerated: `src/api.js` strips
+trailing slashes, and the API serves every route under `/api` as well. Worth
+knowing *why* the slash mattered — with `https://host/` the client requested
+`https://host//schema`, which Vercel answers with a **308 redirect that carries
+no CORS headers**. Browsers block cross-origin redirects without them, so
+`fetch` rejects before any status code is visible and the app reports
+"backend unavailable" while the API is in fact perfectly healthy. Diagnose this
+class of bug with:
+
+```bash
+curl -i -H "Origin: https://your-frontend.vercel.app" https://your-api.vercel.app/schema
+# expect: 200 + Access-Control-Allow-Origin
+# a 3xx, or a 200 with no Access-Control-Allow-Origin, is what the browser blocks
+```
 
 ### 3. Then set `VETDX_CORS_ORIGINS` on the API and redeploy it
 

@@ -1,6 +1,25 @@
 // Thin API client. In dev the Vite proxy forwards /api -> http://127.0.0.1:8000,
 // so no CORS round-trip is needed; set VITE_API_BASE to talk to a remote backend.
-const BASE = import.meta.env.VITE_API_BASE ?? '/api'
+
+/**
+ * Normalise the configured API base.
+ *
+ * A trailing slash is the single most common way this deployment breaks: with
+ * `VITE_API_BASE=https://api.example.com/` the client would request
+ * `https://api.example.com//schema`, which the platform answers with a 308
+ * redirect that carries NO CORS headers. Browsers block a cross-origin redirect
+ * without them, so `fetch` rejects outright and the app reports the backend as
+ * unreachable even though it is perfectly healthy.
+ *
+ * Stripping trailing slashes here makes the app immune to how the environment
+ * variable happens to be typed.
+ */
+export function normalizeBase(raw) {
+  const value = (raw ?? '/api').trim()
+  return value.replace(/\/+$/, '')
+}
+
+const BASE = normalizeBase(import.meta.env?.VITE_API_BASE)
 
 class ApiError extends Error {
   constructor(message, status) {
