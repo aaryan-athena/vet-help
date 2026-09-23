@@ -69,6 +69,15 @@ async function request(path, options = {}) {
 }
 
 export const getSchema = () => request('/schema')
+export const postChat = (message, caseState) =>
+  request('/chat', {
+    method: 'POST',
+    body: JSON.stringify({ message, case: caseState ?? null }),
+  })
+export const getBreeds = () => request('/breeds')
+export const getBreed = (name) => request(`/breeds/${encodeURIComponent(name)}`)
+export const postBreedRecommend = (query) =>
+  request('/breeds/recommend', { method: 'POST', body: JSON.stringify(query) })
 export const getModelInfo = () => request('/model-info')
 export const getHealth = () => request('/health')
 export const postPredict = (payload) =>

@@ -19,6 +19,9 @@ from fastapi.responses import JSONResponse
 from ml import config
 from backend.app.model_service import ModelNotTrainedError, ModelService, get_service
 from backend.app.schemas import (
+    BreedRecommendRequest,
+    ChatRequest,
+    ChatResponse,
     ErrorResponse,
     HealthResponse,
     PredictRequest,
@@ -163,6 +166,85 @@ def predict(payload: PredictRequest, request: Request) -> dict:
     return result
 
 
+@router.post(
+    "/chat",
+    response_model=ChatResponse,
+    responses={422: {"model": ErrorResponse}, 503: {"model": ErrorResponse}},
+    tags=["inference"],
+)
+def chat(payload: ChatRequest, request: Request) -> dict:
+    """Conversational triage: free text in, structured case + assessment out."""
+    from backend.app.chat_service import get_chat_service
+
+    try:
+        service = get_chat_service()
+    except ModelNotTrainedError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+    case = payload.case.model_dump() if payload.case else None
+    try:
+        result = service.reply(payload.message, case)
+    except Exception as exc:  # pragma: no cover - defensive
+        logger.exception("chat turn failed")
+        raise HTTPException(status_code=500, detail="chat failed") from exc
+
+    logger.info(
+        "request_id=%s chat intent=%s species=%s n_symptoms=%d ready=%s unknown=%s",
+        getattr(request.state, "request_id", "-"),
+        result["intent"],
+        result["case"]["species"] or "-",
+        len(result["case"]["symptoms"]),
+        result["ready"],
+        result["extracted"].get("unmatched_terms", []),
+    )
+    return result
+
+
+# --- Breed advisor --------------------------------------------------------
+@router.get("/breeds", tags=["breeds"])
+def list_breeds() -> dict:
+    """Full breed catalogue plus the facets the frontend filters on."""
+    from ml import breeds as breed_module
+
+    catalog = breed_module.get_catalog()
+    return {"breeds": catalog, "facets": breed_module.facets(catalog)}
+
+
+@router.post("/breeds/recommend", tags=["breeds"])
+def recommend_breeds(payload: BreedRecommendRequest, request: Request) -> dict:
+    """Rank breeds for a farm's conditions and purpose."""
+    from ml import breeds as breed_module
+
+    result = breed_module.recommend(
+        climate=payload.climate,
+        purpose=payload.purpose,
+        breed_type=payload.type,
+        region=payload.region,
+        top_n=payload.top_n,
+    )
+    logger.info(
+        "request_id=%s breed_recommend climate=%s purpose=%s suitable=%d/%d top=%s",
+        getattr(request.state, "request_id", "-"),
+        result["query"]["climate_tags"],
+        result["query"]["purpose_tags"],
+        result["n_suitable"],
+        result["n_considered"],
+        result["recommendations"][0]["name"] if result["recommendations"] else "-",
+    )
+    return result
+
+
+@router.get("/breeds/{name}", responses={404: {"model": ErrorResponse}}, tags=["breeds"])
+def breed_profile(name: str) -> dict:
+    """The husbandry envelope for one breed: the conditions it wants."""
+    from ml import breeds as breed_module
+
+    profile = breed_module.describe(name)
+    if profile is None:
+        raise HTTPException(status_code=404, detail=f"No breed matching {name!r}")
+    return profile
+
+
 @router.get("/", include_in_schema=False)
 def index() -> dict:
     """Service descriptor.
@@ -191,6 +273,9 @@ def index() -> dict:
             "schema": "/schema",
             "model_info": "/model-info",
             "predict": "POST /predict",
+            "chat": "POST /chat",
+            "breeds": "/breeds",
+            "breed_recommend": "POST /breeds/recommend",
             "docs": "/docs",
         },
         "disclaimer": config.DISCLAIMER,

@@ -304,9 +304,30 @@ def build_feature_schema(
         if col is None
     ]
 
+    # For each symptom, the terms that most often appear alongside it. The chat
+    # interface uses this to ask a useful follow-up ("you mentioned fever - any
+    # diarrhea or lethargy?") instead of reciting the whole 146-term list.
+    cooccurrence: dict[str, list[str]] = {}
+    vocab_set = set(builder.vocabulary_)
+    pair_counts: Counter = Counter()
+    for symptom_set in records["symptoms"]:
+        known = sorted(set(symptom_set) & vocab_set)
+        for a in known:
+            for b in known:
+                if a != b:
+                    pair_counts[(a, b)] += 1
+    for term in builder.vocabulary_:
+        partners = [
+            (other, n) for (first, other), n in pair_counts.items() if first == term
+        ]
+        partners.sort(key=lambda p: (-p[1], p[0]))
+        if partners:
+            cooccurrence[term] = [other for other, _ in partners[:6]]
+
     return {
         "version": 1,
         "target_column": schema.target,
+        "symptom_cooccurrence": cooccurrence,
         "target_kind": "disease" if schema.target.lower() != "dangerous" else "risk",
         "classes": classes,
         "fields": fields,

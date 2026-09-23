@@ -199,3 +199,136 @@ def test_unknown_paths_still_404(client):
     """The /api mount must not turn every URL into a 200."""
     assert client.get("/definitely-not-a-route").status_code == 404
     assert client.get("/api/definitely-not-a-route").status_code == 404
+
+
+# ---------------------------------------------------------------------------
+# Chat triage
+# ---------------------------------------------------------------------------
+def test_chat_extracts_and_assesses_in_one_turn(client):
+    body = client.post(
+        "/chat",
+        json={"message": "my buffalo has had fever for 2 days and won't eat"},
+    ).json()
+    assert body["intent"] == "assessed"
+    assert body["ready"] is True
+    assert body["case"]["species"] == "buffaloes"
+    assert set(body["case"]["symptoms"]) >= {"fever", "loss of appetite"}
+    assert body["case"]["duration_days"] == 2.0
+    assert body["prediction"]["top_prediction"]["label"]
+    assert body["disclaimer"]
+
+
+def test_chat_carries_state_across_turns(client):
+    """Later turns add to the case rather than replacing it."""
+    first = client.post("/chat", json={"message": "my goat is off her feed"}).json()
+    # Species plus one sign is already enough to assess -- a triage tool should
+    # not withhold an answer to collect a fuller form.
+    assert first["ready"] is True
+    assert first["case"]["symptoms"] == ["loss of appetite"]
+
+    second = client.post(
+        "/chat", json={"message": "also fever and loose motions", "case": first["case"]}
+    ).json()
+    assert second["case"]["species"] == "goat"
+    assert set(second["case"]["symptoms"]) == {"loss of appetite", "fever", "diarrhea"}
+    assert second["prediction"] is not None
+
+
+def test_chat_honours_negation_across_turns(client):
+    first = client.post("/chat", json={"message": "cow with fever and cough"}).json()
+    assert "coughing" in first["case"]["symptoms"]
+    second = client.post(
+        "/chat", json={"message": "actually no cough", "case": first["case"]}
+    ).json()
+    assert "coughing" not in second["case"]["symptoms"]
+    assert "coughing" in second["case"]["negated"]
+
+
+def test_chat_asks_for_the_missing_species(client):
+    body = client.post("/chat", json={"message": "it has a fever"}).json()
+    assert body["ready"] is False
+    assert "which animal" in body["reply"].lower()
+
+
+def test_chat_reports_unrecognised_words_without_inventing(client):
+    body = client.post("/chat", json={"message": "my dog has purple spangles"}).json()
+    assert body["case"]["symptoms"] == []
+    assert "spangles" in body["extracted"]["unmatched_terms"]
+
+
+def test_chat_reset_clears_the_case(client):
+    first = client.post("/chat", json={"message": "buffalo with fever"}).json()
+    assert first["case"]["symptoms"]
+    second = client.post("/chat", json={"message": "reset", "case": first["case"]}).json()
+    assert second["case"]["symptoms"] == []
+    assert second["case"]["species"] == ""
+
+
+def test_chat_suggestions_come_from_cooccurrence(client):
+    body = client.post("/chat", json={"message": "buffalo with fever"}).json()
+    assert body["suggestions"]
+    assert not set(body["suggestions"]) & set(body["case"]["symptoms"])
+
+
+def test_chat_agrees_with_the_predict_endpoint(client):
+    """Chat must not be a second, divergent path to the model."""
+    chat = client.post(
+        "/chat", json={"message": "buffalo with fever, diarrhea and lethargy"}
+    ).json()
+    direct = client.post(
+        "/predict",
+        json={
+            "species": chat["case"]["species"],
+            "symptoms": chat["case"]["symptoms"],
+            "top_n": 3,
+        },
+    ).json()
+    assert chat["prediction"]["predictions"] == direct["predictions"]
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [{"message": ""}, {}, {"message": "hi", "unexpected": 1}, {"message": "x" * 2001}],
+)
+def test_chat_rejects_malformed_input(client, payload):
+    assert client.post("/chat", json=payload).status_code == 422
+
+
+# ---------------------------------------------------------------------------
+# Breed advisor
+# ---------------------------------------------------------------------------
+def test_breeds_catalogue(client):
+    body = client.get("/breeds").json()
+    assert len(body["breeds"]) >= 40
+    assert body["facets"]["n_breeds"] == len(body["breeds"])
+    assert body["facets"]["types"]
+    assert body["facets"]["caveat"]
+
+
+def test_breed_recommend_respects_climate(client):
+    body = client.post(
+        "/breeds/recommend", json={"climate": "hot and humid", "purpose": "dairy", "top_n": 3}
+    ).json()
+    names = [b["name"] for b in body["recommendations"]]
+    assert "Holstein Friesian" not in names
+    assert body["recommendations"][0]["suitable"]
+    assert body["recommendations"][0]["reasons"]
+
+
+def test_breed_profile(client):
+    body = client.get("/breeds/Gir").json()
+    assert body["name"] == "Gir"
+    assert body["ideal_conditions"]
+    assert body["guidance"]
+    assert body["caveat"]
+
+
+def test_unknown_breed_404s(client):
+    assert client.get("/breeds/Tyrannosaurus").status_code == 404
+
+
+@pytest.mark.parametrize(
+    "payload", [{"top_n": 0}, {"top_n": 99}, {"climate": "x" * 201}, {"nope": 1}]
+)
+def test_breed_recommend_rejects_malformed_input(client, payload):
+    assert client.post("/breeds/recommend", json=payload).status_code == 422

@@ -1,0 +1,877 @@
+{
+  "source": "breedinfo.csv",
+  "n_breeds": 41,
+  "breeds": [
+    {
+      "name": "Alambadi",
+      "slug": "alambadi",
+      "type": "Cattle",
+      "region": "Tamil Nadu (India)",
+      "climate": "Hot, dry, semi-arid",
+      "climate_tags": [
+        "dry",
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 3.0,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Grey, long horns, sturdy",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Limited crossbreeding",
+      "features": "Strong draught breed"
+    },
+    {
+      "name": "Amritmahal",
+      "slug": "amritmahal",
+      "type": "Cattle",
+      "region": "Karnataka (India)",
+      "climate": "Hot & dry",
+      "climate_tags": [
+        "dry",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 2.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "White/grey, compact",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Crossbred with HF, Jersey",
+      "features": "Military use in past"
+    },
+    {
+      "name": "Ayrshire",
+      "slug": "ayrshire",
+      "type": "Exotic Cattle",
+      "region": "Scotland (UK)",
+      "climate": "Temperate",
+      "climate_tags": [
+        "temperate"
+      ],
+      "milk_yield_l_per_day": 17.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Red & white patches",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Used in Indian crossbreeding",
+      "features": "High adaptability"
+    },
+    {
+      "name": "Banni",
+      "slug": "banni",
+      "type": "Buffalo",
+      "region": "Kutch, Gujarat (India)",
+      "climate": "Arid, saline areas",
+      "climate_tags": [
+        "arid",
+        "saline"
+      ],
+      "milk_yield_l_per_day": 10.0,
+      "fat_percent": 6.5,
+      "fat_raw": "6\u20137% fat",
+      "traits": "Black, medium size",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Selected breeding in Banni area",
+      "features": "Survives in harsh desert"
+    },
+    {
+      "name": "Bargur",
+      "slug": "bargur",
+      "type": "Cattle",
+      "region": "Tamil Nadu (India)",
+      "climate": "Hilly, forest",
+      "climate_tags": [
+        "forest",
+        "hilly"
+      ],
+      "milk_yield_l_per_day": 2.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Reddish-brown, white streaks",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Local conservation",
+      "features": "Agile, used in forests"
+    },
+    {
+      "name": "Bhadawari",
+      "slug": "bhadawari",
+      "type": "Buffalo",
+      "region": "UP-MP border (India)",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 5.0,
+      "fat_percent": 7.5,
+      "fat_raw": "7\u20138% fat",
+      "traits": "Copper-colored body",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Crossbred with Murrah",
+      "features": "High butterfat milk"
+    },
+    {
+      "name": "Brown Swiss",
+      "slug": "brown-swiss",
+      "type": "Exotic Cattle",
+      "region": "Switzerland",
+      "climate": "Cold to temperate",
+      "climate_tags": [
+        "cold",
+        "temperate"
+      ],
+      "milk_yield_l_per_day": 22.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Brown, large body",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Used in Indian crossbreeding",
+      "features": "Good longevity"
+    },
+    {
+      "name": "Dangi",
+      "slug": "dangi",
+      "type": "Cattle",
+      "region": "Maharashtra (India)",
+      "climate": "Heavy rainfall, hilly",
+      "climate_tags": [
+        "high_rainfall",
+        "hilly"
+      ],
+      "milk_yield_l_per_day": 3.0,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Spotted coat, hardy",
+      "utility": "Draught/Dual",
+      "utility_tags": [
+        "dairy",
+        "draught",
+        "dual"
+      ],
+      "programs": "Conservation efforts",
+      "features": "Works in waterlogged fields"
+    },
+    {
+      "name": "Deoni",
+      "slug": "deoni",
+      "type": "Cattle",
+      "region": "Maharashtra, Karnataka, AP",
+      "climate": "Hot, dry",
+      "climate_tags": [
+        "dry",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 4.5,
+      "fat_percent": 4.5,
+      "fat_raw": "4.5% fat",
+      "traits": "White/black patches",
+      "utility": "Dual-purpose",
+      "utility_tags": [
+        "dairy",
+        "draught",
+        "dual"
+      ],
+      "programs": "Crossbreeding with Jersey, HF",
+      "features": "Popular in South India"
+    },
+    {
+      "name": "Gir",
+      "slug": "gir",
+      "type": "Cattle",
+      "region": "Gujarat (India)",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 12.5,
+      "fat_percent": 4.5,
+      "fat_raw": "4.5% fat",
+      "traits": "Red/white mottled skin, pendulous ears",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "HF \u00d7 Gir hybrids",
+      "features": "Known for A2 milk"
+    },
+    {
+      "name": "Guernsey",
+      "slug": "guernsey",
+      "type": "Exotic Cattle",
+      "region": "Channel Islands (UK)",
+      "climate": "Temperate",
+      "climate_tags": [
+        "temperate"
+      ],
+      "milk_yield_l_per_day": 18.0,
+      "fat_percent": 4.8,
+      "fat_raw": "4.8% fat",
+      "traits": "Light red and white",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Crossbreeding in India",
+      "features": "High beta-carotene milk"
+    },
+    {
+      "name": "Hallikar",
+      "slug": "hallikar",
+      "type": "Cattle",
+      "region": "Karnataka (India)",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 2.0,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Grey/white, compact, strong horns",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Conservation programs",
+      "features": "Foundation of Amritmahal"
+    },
+    {
+      "name": "Hariana",
+      "slug": "hariana",
+      "type": "Cattle",
+      "region": "Haryana (India)",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 4.5,
+      "fat_percent": 4.5,
+      "fat_raw": "4.5% fat",
+      "traits": "White/grey, medium size",
+      "utility": "Dual-purpose",
+      "utility_tags": [
+        "dairy",
+        "draught",
+        "dual"
+      ],
+      "programs": "Crossbreeding with Jersey",
+      "features": "Adapted to North India"
+    },
+    {
+      "name": "Holstein Friesian",
+      "slug": "holstein-friesian",
+      "type": "Exotic Cattle",
+      "region": "Netherlands",
+      "climate": "Temperate",
+      "climate_tags": [
+        "temperate"
+      ],
+      "milk_yield_l_per_day": 25.0,
+      "fat_percent": 3.5,
+      "fat_raw": "3.5% fat",
+      "traits": "Black & white patches",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Major role in Indian crossbreeding",
+      "features": "Highest milk yield globally"
+    },
+    {
+      "name": "Jaffrabadi",
+      "slug": "jaffrabadi",
+      "type": "Buffalo",
+      "region": "Gujarat (India)",
+      "climate": "Hot, humid",
+      "climate_tags": [
+        "hot",
+        "humid"
+      ],
+      "milk_yield_l_per_day": 8.0,
+      "fat_percent": 7.5,
+      "fat_raw": "7\u20138% fat",
+      "traits": "Massive size, long flat horns",
+      "utility": "Draught & Dairy",
+      "utility_tags": [
+        "dairy",
+        "draught"
+      ],
+      "programs": "Crossbred with Murrah",
+      "features": "One of heaviest buffalo breeds"
+    },
+    {
+      "name": "Jersey",
+      "slug": "jersey",
+      "type": "Exotic Cattle",
+      "region": "Channel Islands (UK)",
+      "climate": "Temperate",
+      "climate_tags": [
+        "temperate"
+      ],
+      "milk_yield_l_per_day": 20.0,
+      "fat_percent": 5.0,
+      "fat_raw": "5% fat",
+      "traits": "Light brown, small body",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Widespread Indian crossbreeding",
+      "features": "Rich milk fat"
+    },
+    {
+      "name": "Kangayam",
+      "slug": "kangayam",
+      "type": "Cattle",
+      "region": "Tamil Nadu (India)",
+      "climate": "Hot, dry",
+      "climate_tags": [
+        "dry",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 2.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Grey, medium build",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Local breeding programs",
+      "features": "Good draught power"
+    },
+    {
+      "name": "Kankrej",
+      "slug": "kankrej",
+      "type": "Cattle",
+      "region": "Gujarat-Rajasthan (India)",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 6.0,
+      "fat_percent": 4.8,
+      "fat_raw": "4.8% fat",
+      "traits": "Grey/white, lyre-shaped horns",
+      "utility": "Dual-purpose",
+      "utility_tags": [
+        "dairy",
+        "draught",
+        "dual"
+      ],
+      "programs": "Crossbreeding with HF, Brown Swiss",
+      "features": "High endurance"
+    },
+    {
+      "name": "Kasargod",
+      "slug": "kasargod",
+      "type": "Cattle",
+      "region": "Kerala (India)",
+      "climate": "Humid, hot",
+      "climate_tags": [
+        "hot",
+        "humid"
+      ],
+      "milk_yield_l_per_day": 2.0,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Small, black",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Conservation efforts",
+      "features": "Small indigenous breed"
+    },
+    {
+      "name": "Kenkatha",
+      "slug": "kenkatha",
+      "type": "Cattle",
+      "region": "UP-MP border (India)",
+      "climate": "Dry, rocky",
+      "climate_tags": [
+        "dry",
+        "rocky"
+      ],
+      "milk_yield_l_per_day": 2.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Grey, rugged",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Local breeding only",
+      "features": "Hardy draught animal"
+    },
+    {
+      "name": "Kherigarh",
+      "slug": "kherigarh",
+      "type": "Cattle",
+      "region": "Uttar Pradesh (India)",
+      "climate": "Hot, humid",
+      "climate_tags": [
+        "hot",
+        "humid"
+      ],
+      "milk_yield_l_per_day": 2.0,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Light grey, medium",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Local breeding",
+      "features": "Used for light draught"
+    },
+    {
+      "name": "Khillari",
+      "slug": "khillari",
+      "type": "Cattle",
+      "region": "Maharashtra (India)",
+      "climate": "Dry, plateau",
+      "climate_tags": [
+        "dry",
+        "plateau"
+      ],
+      "milk_yield_l_per_day": 2.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Grey/white, compact",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "State programs",
+      "features": "Fast-moving draught breed"
+    },
+    {
+      "name": "Krishna Valley",
+      "slug": "krishna-valley",
+      "type": "Cattle",
+      "region": "Karnataka-Maharashtra",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 3.5,
+      "fat_percent": 4.5,
+      "fat_raw": "4.5% fat",
+      "traits": "Large white-grey",
+      "utility": "Dual-purpose",
+      "utility_tags": [
+        "dairy",
+        "draught",
+        "dual"
+      ],
+      "programs": "Crossbreeding",
+      "features": "Strong draught"
+    },
+    {
+      "name": "Malnad Gidda",
+      "slug": "malnad-gidda",
+      "type": "Cattle",
+      "region": "Karnataka (India)",
+      "climate": "Heavy rainfall, hilly",
+      "climate_tags": [
+        "high_rainfall",
+        "hilly"
+      ],
+      "milk_yield_l_per_day": 2.0,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Small, black",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Conservation",
+      "features": "Low maintenance, hardy"
+    },
+    {
+      "name": "Mehsana",
+      "slug": "mehsana",
+      "type": "Buffalo",
+      "region": "Gujarat (India)",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 8.0,
+      "fat_percent": 7.0,
+      "fat_raw": "6.5\u20137.5% fat",
+      "traits": "Medium black",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Cross with Murrah",
+      "features": "Good dairy buffalo"
+    },
+    {
+      "name": "Murrah",
+      "slug": "murrah",
+      "type": "Buffalo",
+      "region": "Haryana, Punjab (India)",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 10.0,
+      "fat_percent": 7.5,
+      "fat_raw": "7\u20138% fat",
+      "traits": "Jet black, curled horns",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Most used in crossbreeding",
+      "features": "Highest yielding buffalo"
+    },
+    {
+      "name": "Nagori",
+      "slug": "nagori",
+      "type": "Cattle",
+      "region": "Rajasthan (India)",
+      "climate": "Hot, arid",
+      "climate_tags": [
+        "arid",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 2.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Grey, tall, strong",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Local breeding",
+      "features": "Camel-like endurance"
+    },
+    {
+      "name": "Nagpuri",
+      "slug": "nagpuri",
+      "type": "Buffalo",
+      "region": "Maharashtra (India)",
+      "climate": "Hot, dry",
+      "climate_tags": [
+        "dry",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 5.0,
+      "fat_percent": 7.0,
+      "fat_raw": "7% fat",
+      "traits": "Black, sickle-shaped horns",
+      "utility": "Dairy/Draught",
+      "utility_tags": [
+        "dairy",
+        "draught"
+      ],
+      "programs": "Crossbreeding with Murrah",
+      "features": "Dual purpose"
+    },
+    {
+      "name": "Nili Ravi",
+      "slug": "nili-ravi",
+      "type": "Buffalo",
+      "region": "Punjab (India/Pakistan)",
+      "climate": "Hot, humid",
+      "climate_tags": [
+        "hot",
+        "humid"
+      ],
+      "milk_yield_l_per_day": 8.0,
+      "fat_percent": 7.0,
+      "fat_raw": "6.5\u20137.5% fat",
+      "traits": "Black, white markings",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Crossbred with Murrah",
+      "features": "Good dairy buffalo"
+    },
+    {
+      "name": "Nimari",
+      "slug": "nimari",
+      "type": "Cattle",
+      "region": "Madhya Pradesh (India)",
+      "climate": "Hot, dry",
+      "climate_tags": [
+        "dry",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 2.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Red, medium build",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Local breeding",
+      "features": "Hardy draught breed"
+    },
+    {
+      "name": "Ongole",
+      "slug": "ongole",
+      "type": "Cattle",
+      "region": "Andhra Pradesh (India)",
+      "climate": "Hot, humid",
+      "climate_tags": [
+        "hot",
+        "humid"
+      ],
+      "milk_yield_l_per_day": 4.0,
+      "fat_percent": 4.5,
+      "fat_raw": "4.5% fat",
+      "traits": "White, large size",
+      "utility": "Draught & Export",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Crossbreeding",
+      "features": "Exported worldwide"
+    },
+    {
+      "name": "Pulikulam",
+      "slug": "pulikulam",
+      "type": "Cattle",
+      "region": "Tamil Nadu (India)",
+      "climate": "Hot, dry",
+      "climate_tags": [
+        "dry",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 2.0,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Small, grey",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Conservation",
+      "features": "Used in Jallikattu"
+    },
+    {
+      "name": "Rathi",
+      "slug": "rathi",
+      "type": "Cattle",
+      "region": "Rajasthan (India)",
+      "climate": "Hot, arid",
+      "climate_tags": [
+        "arid",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 6.0,
+      "fat_percent": 4.5,
+      "fat_raw": "4.5% fat",
+      "traits": "White, brown patches",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Crossbreeding with HF",
+      "features": "Good dairy breed"
+    },
+    {
+      "name": "Red Dane",
+      "slug": "red-dane",
+      "type": "Exotic Cattle",
+      "region": "Denmark",
+      "climate": "Temperate",
+      "climate_tags": [
+        "temperate"
+      ],
+      "milk_yield_l_per_day": 20.0,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Red coat",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Crossbreeding in India",
+      "features": "High milk yield"
+    },
+    {
+      "name": "Red Sindhi",
+      "slug": "red-sindhi",
+      "type": "Cattle",
+      "region": "Sindh (Pakistan/India)",
+      "climate": "Hot, arid",
+      "climate_tags": [
+        "arid",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 7.0,
+      "fat_percent": 4.6,
+      "fat_raw": "4.6% fat",
+      "traits": "Reddish-brown",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Crossbreeding with Jersey",
+      "features": "Popular dairy breed"
+    },
+    {
+      "name": "Sahiwal",
+      "slug": "sahiwal",
+      "type": "Cattle",
+      "region": "Punjab (India/Pakistan)",
+      "climate": "Hot, semi-arid",
+      "climate_tags": [
+        "hot",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 8.0,
+      "fat_percent": 4.8,
+      "fat_raw": "4.8% fat",
+      "traits": "Reddish-brown",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Crossbreeding with HF",
+      "features": "Heat tolerant"
+    },
+    {
+      "name": "Surti",
+      "slug": "surti",
+      "type": "Buffalo",
+      "region": "Gujarat (India)",
+      "climate": "Humid, semi-arid",
+      "climate_tags": [
+        "humid",
+        "semi_arid"
+      ],
+      "milk_yield_l_per_day": 5.0,
+      "fat_percent": 7.0,
+      "fat_raw": "7% fat",
+      "traits": "Medium black, sickle horns",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Cross with Murrah",
+      "features": "Rich fat milk"
+    },
+    {
+      "name": "Tharparkar",
+      "slug": "tharparkar",
+      "type": "Cattle",
+      "region": "Rajasthan (India/Pakistan)",
+      "climate": "Hot, arid",
+      "climate_tags": [
+        "arid",
+        "hot"
+      ],
+      "milk_yield_l_per_day": 5.0,
+      "fat_percent": 4.5,
+      "fat_raw": "4.5% fat",
+      "traits": "White/grey",
+      "utility": "Dual-purpose",
+      "utility_tags": [
+        "dairy",
+        "draught",
+        "dual"
+      ],
+      "programs": "Crossbreeding with Jersey",
+      "features": "Disease resistant"
+    },
+    {
+      "name": "Toda",
+      "slug": "toda",
+      "type": "Buffalo",
+      "region": "Nilgiri Hills, Tamil Nadu",
+      "climate": "Cool, hilly",
+      "climate_tags": [
+        "cool",
+        "hilly"
+      ],
+      "milk_yield_l_per_day": 3.0,
+      "fat_percent": 7.0,
+      "fat_raw": "7% fat",
+      "traits": "Medium, black",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Local breeding",
+      "features": "Tribal community breed"
+    },
+    {
+      "name": "Umblachery",
+      "slug": "umblachery",
+      "type": "Cattle",
+      "region": "Tamil Nadu (India)",
+      "climate": "Hot, humid",
+      "climate_tags": [
+        "hot",
+        "humid"
+      ],
+      "milk_yield_l_per_day": 2.5,
+      "fat_percent": 4.0,
+      "fat_raw": "4% fat",
+      "traits": "Grey/white, medium",
+      "utility": "Draught",
+      "utility_tags": [
+        "draught"
+      ],
+      "programs": "Local breeding",
+      "features": "Agile draught breed"
+    },
+    {
+      "name": "Vechur",
+      "slug": "vechur",
+      "type": "Cattle",
+      "region": "Kerala (India)",
+      "climate": "Hot, humid",
+      "climate_tags": [
+        "hot",
+        "humid"
+      ],
+      "milk_yield_l_per_day": 1.5,
+      "fat_percent": 4.5,
+      "fat_raw": "4.5% fat",
+      "traits": "Dwarf, small size",
+      "utility": "Dairy",
+      "utility_tags": [
+        "dairy"
+      ],
+      "programs": "Conservation programs",
+      "features": "World\u2019s smallest cattle breed"
+    }
+  ]
+}

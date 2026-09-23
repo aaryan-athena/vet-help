@@ -51,7 +51,8 @@ inferred before training on it.
 ```
 vet-help/
 ├── data/
-│   ├── data.csv                  # source CSV — drop your own here
+│   ├── data.csv                  # triage source CSV — drop your own here
+│   ├── breedinfo.csv             # 41-breed cattle/buffalo reference table
 │   └── processed/                # versioned outputs of the pipeline (gitignored)
 │       ├── cases_clean.csv       #   cleaned case records
 │       ├── features_trainval.csv #   engineered feature matrix (train+val)
@@ -64,17 +65,20 @@ vet-help/
 │   ├── eda.py                    # class balance, symptom frequency, co-occurrence
 │   ├── train.py                  # model comparison, selection, artifact writing
 │   ├── explain.py                # SHAP global + per-prediction explanations
+│   ├── nlp.py                    # chat: symptom/species/duration extraction, negation
+│   ├── breeds.py                 # breed advisor: climate matching + yield ranking
 │   ├── report.py                 # renders docs/evaluation_report.md from artifacts
 │   └── artifacts/                # model.joblib, feature_schema.json, metrics, runs.jsonl
 ├── backend/app/
 │   ├── main.py                   # FastAPI routes, CORS, structured logging
 │   ├── model_service.py          # loads artifacts once, serves predictions
+│   ├── chat_service.py           # conversation orchestration for /chat
 │   └── schemas.py                # Pydantic request/response contracts
 ├── frontend/                     # React + Vite single-page app
 │   └── src/
 │       ├── api.js                # fetch client with typed error handling
 │       ├── App.jsx               # tabs, loading and error states
-│       └── components/           # SymptomForm, Results, ModelInfo
+│       └── components/           # ChatTriage, BreedAdvisor, SymptomForm, Results, ModelInfo
 ├── tests/                        # unit + integration + deployment-guard tests
 ├── reports/                      # EDA figures and eda_summary.json (gitignored)
 ├── docs/evaluation_report.md     # generated model comparison write-up
@@ -150,6 +154,18 @@ scores it once on the untouched test split, and writes:
 | `ml/artifacts/model_info.json` | deployed-model summary for `GET /model-info` |
 | `ml/artifacts/shap_global.json` | global feature importance |
 | `ml/artifacts/runs.jsonl` | append-only experiment log (params + metrics per run) |
+| `ml/artifacts/breeds.json` | parsed breed catalogue (`python -m ml.breeds`) |
+
+The breed catalogue is parsed separately (it needs no training):
+
+```bash
+python -m ml.breeds                                    # -> ml/artifacts/breeds.json
+python -m ml.breeds --climate "hot humid" --purpose dairy   # try it from the CLI
+python -m ml.breeds --describe Gir
+```
+
+If that artifact is absent the API falls back to reading the CSV directly, so
+this step is an optimisation rather than a requirement.
 
 Then regenerate the write-up:
 
@@ -172,6 +188,10 @@ Interactive docs at <http://localhost:8000/docs>.
 | `GET /schema` | field definitions, symptom vocabulary and valid values, so the form is generated not hardcoded |
 | `GET /model-info` | deployed model, metrics, comparison table, confusion matrix, global importance |
 | `POST /predict` | top-N outcomes with probabilities + SHAP drivers for the top one |
+| `POST /chat` | free-text triage: extracts a case from a sentence and assesses it |
+| `GET /breeds` | full breed catalogue plus filter facets |
+| `POST /breeds/recommend` | rank breeds for a farm's climate and purpose |
+| `GET /breeds/{name}` | the conditions one breed wants |
 
 ```bash
 curl -X POST http://localhost:8000/predict \
@@ -216,7 +236,7 @@ variable (see [Deploying to Vercel](#deploying-to-vercel)).
 python -m pytest
 ```
 
-84 tests: unit coverage of schema discovery, text canonicalisation, Yes/No
+175 tests: unit coverage of schema discovery, text canonicalisation, Yes/No
 encoding, duration parsing and every branch of the feature builder, plus
 integration tests that drive the real trained pipeline through the FastAPI app
 (ranking, explanation, unknown-symptom handling, input validation, CORS). Two
@@ -227,6 +247,11 @@ suites guard the deployment specifically:
 - `tests/test_serving_deps.py` boots the API in a subprocess with `shap`,
   `xgboost` and `matplotlib` made unimportable — exactly the production
   environment — and asserts predictions and explanations are byte-identical.
+- `tests/test_nlp.py` covers extraction, negation scoping, fuzzy typo matching,
+  age-vs-duration, and the rule that the extractor can never emit a term outside
+  the model's vocabulary.
+- `tests/test_breeds.py` pins the safety property: a temperate exotic must never
+  top a hot, humid query, while still ranking first for a temperate one.
 
 Tests needing a trained model **skip** rather than fail if
 `ml/artifacts/model.joblib` is absent, so a fresh clone can run the unit tests
@@ -287,6 +312,88 @@ values in numpy with no sampling and no `shap` import. That is both more
 accurate than the sampling explainers and what keeps the serving bundle small.
 The `shap` package is still used at training time for non-linear models, and
 `tests/test_explain.py` pins the two implementations together.
+
+---
+
+## The two interfaces
+
+### Chat triage (default)
+
+The landing tab is a chat window. A user types what they see in their own
+words and the backend pulls out a structured case:
+
+```
+"my buffalo has had fever for 2 days, loose motions,
+ and she's not eating but no cough"
+
+  species    buffaloes
+  duration   2 days  (2.0)
+  symptoms   fever, diarrhea, loss of appetite
+  negated    coughing          <- excluded from the model input
+```
+
+**This is deliberate NLP, not an LLM.** `ml/nlp.py` is a deterministic
+extractor: longest-match phrase lookup over the model's own 146 canonical
+symptom terms, the shared synonym table, a farmer-phrasing table
+("loose motions", "off her feed", "throwing up"), `difflib` fuzzy matching for
+typos ("diarhea", "bufalo"), negation with clause scoping, and age-vs-duration
+disambiguation. It costs nothing per message, needs no API key, adds **0 MB** to
+the deployment (`difflib` is stdlib), works offline, and never sends anyone's
+animal data to a third party — all of which matter for the low-connectivity
+setting this tool is aimed at.
+
+Two properties are enforced by tests:
+
+- **It can only output symptoms the model actually knows.** The vocabulary *is*
+  the model's feature list, so the chat path and the form path are the same
+  path. `test_chat_agrees_with_the_predict_endpoint` asserts both routes return
+  identical probabilities for the same case.
+- **Negation respects clause boundaries.** "fever, no vomiting, limping" marks
+  only vomiting as ruled out — an earlier version let the `no` leak across the
+  comma and wrongly negate the limping.
+
+Words it does not recognise are reported back rather than guessed at, the case
+is shown in a side panel where any sign can be removed with a click, and the
+assessment updates on every turn. The manual checkbox form remains on its own
+tab as a fallback.
+
+The bot's limits are real: it understands *descriptions of clinical signs*, not
+open-ended conversation. It will not answer "what medicine should I give?" — and
+it should not.
+
+### Breed advisor
+
+A second tab answers two questions over `data/breedinfo.csv` (41 cattle and
+buffalo breeds):
+
+- **"I have these conditions — which breed?"** Free-text climate ("hot and
+  humid", "cool and hilly") plus purpose and animal type, ranked.
+- **"I have this breed — what conditions does it want?"** Ideal climate, yield,
+  fat percentage, physical traits, crossbreeding programmes and husbandry notes.
+
+**This is a transparent scoring lookup, not a model.** 41 rows is nothing to
+train on, and a model there would only launder a lookup table into false
+confidence. Every number traces to a row in the CSV and every recommendation
+shows the reasons behind its score.
+
+The scoring decision that matters most:
+
+> Ranking on yield alone puts **Holstein Friesian (25 L/day, temperate)** at the
+> top of *every* query — including hot, humid ones, where heat stress makes it a
+> poor and expensive animal. So climate fit is weighted heaviest, conflicting
+> climates are a hard penalty rather than a rounding error, and yield is
+> normalised **among suitable breeds only**. A draught query ignores milk yield
+> entirely.
+
+| Query | Top result | Why |
+|---|---|---|
+| hot + humid, dairy | Jaffrabadi, Nili Ravi, Gir | buffaloes suited to hot/humid; Gir for the 12.5 L/day |
+| temperate, dairy | Holstein Friesian | exotics rank first where they genuinely belong |
+| hot + dry, draught | Alambadi, Amritmahal, Deoni | draught breeds; yield ignored |
+
+Breeds that conflict with the stated climate are still shown, flagged
+*not recommended here* with the conflict spelled out, rather than silently
+dropped — a farmer who was considering one deserves to know why it is a bad fit.
 
 ---
 
@@ -452,6 +559,29 @@ Summarised here, in full in [`docs/evaluation_report.md`](docs/evaluation_report
 - **Unknown provenance** — geographic and breed coverage of the source records
   is undocumented, so nothing here should be assumed to generalise.
 - **Species confounding**, as above.
+
+### Chat interface
+
+- It understands **descriptions of clinical signs**, not open-ended conversation.
+  It cannot answer "what medicine should I give?", and deliberately does not try.
+- It can only recognise the 146 symptom terms in the training data. Anything else
+  is reported back as unrecognised rather than guessed at — but that does mean a
+  genuinely important sign the dataset never recorded will be missed.
+- Negation handling is scoped by clause and is good for ordinary phrasing, but it
+  is rules, not comprehension. Unusual sentence structure can still fool it, which
+  is why every extracted case is shown for review before it drives an assessment.
+
+### Breed advisor
+
+- 41 breeds from one reference table. Coverage is India-centric and far from
+  every breed a farmer might meet.
+- Yield figures are single averages, not ranges or confidence intervals. Real
+  output depends on feed, water, housing, parity and management far more than on
+  breed.
+- Climate suitability is matched on tags parsed from short free-text
+  descriptions; it is not agro-climatic zone modelling.
+- It says nothing about local availability, price, market access or extension
+  support, all of which can matter more than the breed itself.
 
 VetDx is a triage and decision-support aid. It does not diagnose, and its output
 must be confirmed by a qualified veterinarian.

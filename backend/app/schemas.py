@@ -118,3 +118,77 @@ class SchemaResponse(BaseModel):
 
 class ErrorResponse(BaseModel):
     detail: str
+
+
+# ---------------------------------------------------------------------------
+# Chat triage
+# ---------------------------------------------------------------------------
+class ChatCase(BaseModel):
+    """Accumulated case state, round-tripped by the client (the API is stateless)."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    species: str = ""
+    symptoms: list[str] = Field(default_factory=list, max_length=40)
+    negated: list[str] = Field(default_factory=list, max_length=40)
+    age_years: float | None = Field(None, ge=0, le=200)
+    duration: str = Field("", max_length=60)
+    duration_days: float | None = Field(None, ge=0, le=10_000)
+
+
+class ChatRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        json_schema_extra={
+            "example": {
+                "message": "my buffalo has had fever for 2 days and won't eat",
+                "case": {"species": "", "symptoms": []},
+            }
+        },
+    )
+
+    message: str = Field(..., min_length=1, max_length=2000)
+    case: ChatCase | None = None
+
+
+class Extraction(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    species: str = ""
+    symptoms: list[str] = Field(default_factory=list)
+    negated: list[str] = Field(default_factory=list)
+    unmatched_terms: list[str] = Field(default_factory=list)
+
+
+class ChatResponse(BaseModel):
+    reply: str
+    intent: str
+    case: ChatCase
+    ready: bool
+    extracted: Extraction
+    prediction: PredictResponse | None = None
+    suggestions: list[str] = Field(default_factory=list)
+    disclaimer: str
+
+
+# ---------------------------------------------------------------------------
+# Breed advisor
+# ---------------------------------------------------------------------------
+class BreedRecommendRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        json_schema_extra={
+            "example": {
+                "climate": "hot and humid",
+                "purpose": "dairy",
+                "type": "Buffalo",
+                "top_n": 5,
+            }
+        },
+    )
+
+    climate: str = Field("", max_length=200)
+    purpose: str = Field("", max_length=100)
+    type: str = Field("", max_length=60)
+    region: str = Field("", max_length=100)
+    top_n: int = Field(5, ge=1, le=41)

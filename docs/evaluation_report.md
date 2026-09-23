@@ -1,6 +1,6 @@
 # VetDx model evaluation report
 
-*Generated from `evaluation_report.json`, training run 2026-09-12T10:33:22+00:00. Regenerate with `python -m ml.report`.*
+*Generated from `evaluation_report.json`, training run 2026-09-23T05:46:05+00:00. Regenerate with `python -m ml.report`.*
 
 ## Data
 
@@ -22,11 +22,11 @@ Scores on the validation split; the CV column is 5-fold stratified macro F1 over
 | Model | Accuracy | Macro F1 | Balanced acc. | ROC AUC | CV macro F1 | Fit (s) | Tuned |
 |---|---|---|---|---|---|---|---|
 | `majority_baseline` | 0.978 | 0.494 | 0.500 | 0.500 | 0.494 | 0.0 | — |
-| `logistic_regression` **(deployed)** | 0.993 | 0.927 | 0.996 | 0.998 | 0.822 | 4.88 | C=0.003 |
-| `naive_bayes` | 0.978 | 0.494 | 0.500 | 0.896 | 0.743 | 0.1 | alpha=0.5 |
-| `random_forest` | 0.970 | 0.492 | 0.496 | 0.977 | 0.745 | 12.1 | max_depth=6, min_samples_leaf=2 |
-| `neural_net` | 0.963 | 0.491 | 0.492 | 0.318 | 0.564 | 1.01 | alpha=0.01, hidden_layer_sizes=(32,) |
-| `xgboost` | 0.985 | 0.746 | 0.667 | 0.990 | 0.614 | 4.81 | learning_rate=0.05, max_depth=3, n_estimators=400 |
+| `logistic_regression` **(deployed)** | 0.993 | 0.927 | 0.996 | 0.998 | 0.822 | 3.88 | C=0.003 |
+| `naive_bayes` | 0.978 | 0.494 | 0.500 | 0.896 | 0.743 | 0.09 | alpha=0.5 |
+| `random_forest` | 0.970 | 0.492 | 0.496 | 0.977 | 0.745 | 9.37 | max_depth=6, min_samples_leaf=2 |
+| `neural_net` | 0.963 | 0.491 | 0.492 | 0.318 | 0.564 | 0.78 | alpha=0.01, hidden_layer_sizes=(32,) |
+| `xgboost` | 0.985 | 0.746 | 0.667 | 0.990 | 0.614 | 3.51 | learning_rate=0.05, max_depth=3, n_estimators=400 |
 
 ## Chosen model: `logistic_regression`
 
@@ -56,25 +56,25 @@ Selected on validation macro F1, then refit on train+validation and scored once 
 
 ## What the model leans on
 
-Global importance, method: `shap`.
+Global importance, method: `shap_linear_exact`.
 
 | Feature | Mean absolute contribution |
 |---|---|
-| Species: Buffaloes | 0.1896 |
-| Species: Chicken | 0.0821 |
-| Symptom: Lethargy | 0.0806 |
-| Symptom pair: Diarrhea + Loss Of Appetite | 0.0530 |
-| Symptom: Fever | 0.0487 |
-| Symptom: Epistaxis | 0.0449 |
-| Symptom pair: Diarrhea + Lethargy | 0.0408 |
-| Symptom: Nasal Discharge | 0.0403 |
-| Symptom: Vomiting | 0.0346 |
-| Species: Monkey | 0.0329 |
-| Species: Sheep | 0.0304 |
-| Symptom pair: Fever + Pain | 0.0301 |
-| Symptom pair: Fever + Weight Loss | 0.0287 |
-| Symptom: Ruffled Feathers | 0.0282 |
-| Symptom pair: Pain + Weight Loss | 0.0281 |
+| Species: Buffaloes | 0.1620 |
+| Symptom: Lethargy | 0.0788 |
+| Species: Chicken | 0.0697 |
+| Symptom pair: Pain + Weight Loss | 0.0488 |
+| Symptom: Fever | 0.0481 |
+| Symptom pair: Diarrhea + Loss Of Appetite | 0.0466 |
+| Symptom: Nasal Discharge | 0.0413 |
+| Symptom pair: Diarrhea + Lethargy | 0.0395 |
+| Symptom: Skin Rashes | 0.0376 |
+| Species: Sheep | 0.0360 |
+| Symptom: Epistaxis | 0.0359 |
+| Symptom pair: Fever + Pain | 0.0328 |
+| Symptom: Vomiting | 0.0312 |
+| Symptom: Death | 0.0301 |
+| Symptom pair: Fever + Weight Loss | 0.0301 |
 
 ## Limitations
 

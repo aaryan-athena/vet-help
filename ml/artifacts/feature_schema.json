@@ -1,6 +1,1065 @@
 {
   "version": 1,
   "target_column": "Dangerous",
+  "symptom_cooccurrence": {
+    "abdominal discomfort": [
+      "diarrhea",
+      "fever",
+      "lethargy",
+      "nausea",
+      "vomiting"
+    ],
+    "abdominal pain": [
+      "diarrhea",
+      "death",
+      "fever",
+      "loss of appetite",
+      "malpresentation",
+      "stiffness"
+    ],
+    "abortion": [
+      "fever",
+      "loss of appetite",
+      "weight loss",
+      "depression",
+      "diarrhea",
+      "eye redness"
+    ],
+    "anemia": [
+      "weight loss",
+      "diarrhea",
+      "coughing",
+      "edema in lower jaw",
+      "lethargy",
+      "bloody"
+    ],
+    "ataxia": [
+      "depression",
+      "fever",
+      "lethargy",
+      "loss of appetite",
+      "seizures",
+      "skin rashes"
+    ],
+    "behaviour change": [
+      "death",
+      "pain",
+      "tremor",
+      "weight loss"
+    ],
+    "blindness": [
+      "pain",
+      "lethargy",
+      "circling",
+      "fever",
+      "weight loss",
+      "lameness"
+    ],
+    "bloody": [
+      "anemia",
+      "fever",
+      "swelling",
+      "constipation",
+      "depression",
+      "diarrhea"
+    ],
+    "bloody discharge": [
+      "colic",
+      "diarrhea",
+      "difficulty in breathing",
+      "immediate death",
+      "loss of appetite",
+      "neurologic abnormalities"
+    ],
+    "bloody drool": [
+      "facial swelling",
+      "lossened teeth",
+      "unable to eat",
+      "abdominal pain"
+    ],
+    "bottle jaw": [
+      "death",
+      "diarrhea",
+      "inability to stand",
+      "jaundice",
+      "malpresentation"
+    ],
+    "broken bones": [
+      "nasal discharge",
+      "painfull",
+      "swelling on leg",
+      "loss of appetite"
+    ],
+    "change their normal behaviour": [
+      "loss of appetite",
+      "pain",
+      "stop drinking",
+      "lameness",
+      "depression",
+      "nasal discharge"
+    ],
+    "chest pain": [
+      "fever",
+      "chills",
+      "lethargy",
+      "loss of appetite",
+      "muscle aches"
+    ],
+    "chills": [
+      "fever",
+      "lethargy",
+      "chest pain",
+      "coughing",
+      "joint pain",
+      "loss of appetite"
+    ],
+    "circling": [
+      "blindness",
+      "depression",
+      "fever",
+      "lack of coordination",
+      "seizures"
+    ],
+    "colic": [
+      "depression",
+      "diarrhea",
+      "fever",
+      "loss of appetite",
+      "bloody discharge",
+      "difficulty in breathing"
+    ],
+    "congestion": [
+      "fever",
+      "depression",
+      "jaundice",
+      "lethargy",
+      "nasal discharge",
+      "pneumonia"
+    ],
+    "constipation": [
+      "bloody",
+      "depression",
+      "diarrhea",
+      "loss of appetite",
+      "nausea",
+      "swelling"
+    ],
+    "convulsion": [
+      "death",
+      "fever",
+      "weight loss",
+      "depression",
+      "nasal discharge",
+      "pain"
+    ],
+    "coughing": [
+      "fever",
+      "difficulty in breathing",
+      "loss of appetite",
+      "lethargy",
+      "weight loss",
+      "sneezing"
+    ],
+    "crusty": [
+      "hair loss",
+      "lesion",
+      "pain"
+    ],
+    "death": [
+      "fever",
+      "pain",
+      "loss of appetite",
+      "diarrhea",
+      "weight loss",
+      "lethargy"
+    ],
+    "decrease appetite": [
+      "diarrhea",
+      "drooling",
+      "fever",
+      "vomiting"
+    ],
+    "dehydration": [
+      "diarrhea",
+      "vomiting",
+      "fever",
+      "weight loss",
+      "lethargy",
+      "pain"
+    ],
+    "dejection": [
+      "loss of appetite",
+      "coughing",
+      "diarrhea",
+      "lesion",
+      "pain",
+      "slow growth"
+    ],
+    "depression": [
+      "fever",
+      "loss of appetite",
+      "weight loss",
+      "coughing",
+      "pain",
+      "nasal discharge"
+    ],
+    "diarrhea": [
+      "weight loss",
+      "fever",
+      "vomiting",
+      "loss of appetite",
+      "lethargy",
+      "pain"
+    ],
+    "diarrhea with muscus": [
+      "flatulence",
+      "pain",
+      "tensemus",
+      "watery stool"
+    ],
+    "difficulty breating": [
+      "death",
+      "fever",
+      "trembling",
+      "anemia",
+      "stumbling",
+      "weight loss"
+    ],
+    "difficulty in breathing": [
+      "coughing",
+      "fever",
+      "lethargy",
+      "loss of appetite",
+      "sneezing",
+      "nasal discharge"
+    ],
+    "difficulty in swallowing": [
+      "loss of appetite",
+      "death",
+      "lethargy"
+    ],
+    "discharge": [
+      "dullness",
+      "lying down",
+      "urination",
+      "weight loss"
+    ],
+    "discharge from eye": [
+      "diarrhea",
+      "fever",
+      "lethargy",
+      "loss of appetite",
+      "pain",
+      "scabs"
+    ],
+    "discomfort": [
+      "pain",
+      "death",
+      "diarrhea",
+      "swelling",
+      "loss of appetite"
+    ],
+    "distended stomach": [
+      "heavy breathing",
+      "lethargy",
+      "loss of appetite",
+      "nausea",
+      "vomiting"
+    ],
+    "drooling": [
+      "lethargy",
+      "weight loss",
+      "stumbling",
+      "fever",
+      "drooping ears",
+      "urination problem"
+    ],
+    "drooping ears": [
+      "drooling",
+      "weight loss",
+      "lethargy",
+      "stumbling",
+      "fever",
+      "lack of coordination"
+    ],
+    "droopy wings": [
+      "coughing",
+      "twisted neck",
+      "sneezing"
+    ],
+    "dullness": [
+      "fever",
+      "loss of appetite",
+      "pain",
+      "weight loss",
+      "coughing",
+      "depression"
+    ],
+    "edema in lower jaw": [
+      "anemia",
+      "weight loss",
+      "coughing",
+      "fever",
+      "reduce growth"
+    ],
+    "enlarged lymph nodes or swelling": [
+      "difficulty in breathing",
+      "fever",
+      "weight loss",
+      "thrist and urination"
+    ],
+    "enteritis": [
+      "weight loss",
+      "coughing",
+      "diarrhea",
+      "fever",
+      "halitosis",
+      "stomach cramps"
+    ],
+    "epistaxis": [
+      "coughing",
+      "death",
+      "diarrhea",
+      "difficulty in breathing",
+      "nasal discharge",
+      "sneezing"
+    ],
+    "extending its neck": [
+      "gasping for air",
+      "coughing",
+      "weight loss"
+    ],
+    "eye and skin change": [
+      "difficulty in breathing",
+      "fever",
+      "unable to exercise",
+      "coughing",
+      "loss of appetite"
+    ],
+    "eye closed": [
+      "death",
+      "sneezing",
+      "weight loss"
+    ],
+    "eye redness": [
+      "frequent eye infections",
+      "abortion",
+      "fever",
+      "lethargy"
+    ],
+    "facial edema": [
+      "difficulty in breathing",
+      "coughing",
+      "death",
+      "diarrhea",
+      "fever",
+      "lethargy"
+    ],
+    "facial paralysis": [
+      "depression",
+      "drooling",
+      "fever",
+      "lack of coordination",
+      "pain",
+      "tenderness"
+    ],
+    "facial swelling": [
+      "bloody drool",
+      "lossened teeth",
+      "unable to eat",
+      "blindness",
+      "coughing",
+      "diarrhea"
+    ],
+    "fetopelvic dispropotion": [
+      "death",
+      "pain",
+      "uteria inertia",
+      "malpresentation"
+    ],
+    "fever": [
+      "loss of appetite",
+      "lethargy",
+      "weight loss",
+      "diarrhea",
+      "depression",
+      "pain"
+    ],
+    "flatulence": [
+      "diarrhea with muscus",
+      "pain",
+      "tensemus",
+      "watery stool"
+    ],
+    "frequent eye infections": [
+      "eye redness",
+      "lethargy"
+    ],
+    "gasping for air": [
+      "extending its neck",
+      "coughing",
+      "weight loss"
+    ],
+    "greenish yellow nasal discharge": [
+      "lack of pigmentation",
+      "lethargy",
+      "pain on face",
+      "sneezing",
+      "vomiting"
+    ],
+    "hair loss": [
+      "crusty",
+      "lethargy",
+      "pain",
+      "scabs",
+      "skin issue",
+      "underdeveloped muscles"
+    ],
+    "halitosis": [
+      "coughing",
+      "enteritis",
+      "lethargy",
+      "nasal discharge",
+      "weight loss"
+    ],
+    "heat": [
+      "pain",
+      "swelling",
+      "nasal discharge",
+      "redness",
+      "swelling on leg",
+      "fever"
+    ],
+    "heavy breathing": [
+      "lethargy",
+      "diarrhea",
+      "distended stomach",
+      "pain",
+      "weight loss"
+    ],
+    "hyperesthesia": [
+      "death",
+      "fever",
+      "respiratory distress",
+      "seizuers",
+      "weekness in the back legs"
+    ],
+    "immediate death": [
+      "bloody discharge",
+      "difficulty in breathing",
+      "fever",
+      "neurologic abnormalities",
+      "pain",
+      "swelling"
+    ],
+    "inability to stand": [
+      "bottle jaw",
+      "depression",
+      "diarrhea",
+      "lethargy",
+      "stiffness"
+    ],
+    "inappentence": [
+      "blindness",
+      "dehydration",
+      "diarrhea",
+      "fever",
+      "lethargy",
+      "weight loss"
+    ],
+    "incoordination": [
+      "fever",
+      "abortion",
+      "diarrhea",
+      "difficulty in breathing"
+    ],
+    "jaundice": [
+      "fever",
+      "lethargy",
+      "loss of appetite",
+      "bottle jaw",
+      "congestion",
+      "coughing"
+    ],
+    "joint pain": [
+      "fever",
+      "coughing",
+      "lethargy",
+      "loss of appetite",
+      "chills",
+      "lession on the skin"
+    ],
+    "kid moratality": [
+      "lethargy",
+      "anemia",
+      "diarrhea",
+      "dullness",
+      "fever",
+      "reduce growth"
+    ],
+    "lack of coordination": [
+      "depression",
+      "drooling",
+      "fever",
+      "circling",
+      "drooping ears",
+      "facial paralysis"
+    ],
+    "lack of pigmentation": [
+      "greenish yellow nasal discharge",
+      "lethargy",
+      "pain on face",
+      "sneezing",
+      "vomiting"
+    ],
+    "lacrimation": [
+      "diarrhea",
+      "coughing",
+      "dullness",
+      "facial swelling",
+      "loss of appetite",
+      "nasal discharge"
+    ],
+    "lameness": [
+      "loss of appetite",
+      "fever",
+      "weight loss",
+      "swelling",
+      "depression",
+      "pain"
+    ],
+    "lesion": [
+      "pain",
+      "dejection",
+      "diarrhea",
+      "loss of appetite",
+      "slow growth",
+      "crusty"
+    ],
+    "lession on the skin": [
+      "fever",
+      "jaundice",
+      "pain",
+      "pneumonia",
+      "vomiting",
+      "joint pain"
+    ],
+    "lethargy": [
+      "fever",
+      "loss of appetite",
+      "weight loss",
+      "diarrhea",
+      "coughing",
+      "difficulty in breathing"
+    ],
+    "limping": [
+      "depression",
+      "fever",
+      "coughing",
+      "swelling",
+      "sneezing"
+    ],
+    "los of the ability to walk": [
+      "fever",
+      "weakened legs",
+      "lameness",
+      "weight loss"
+    ],
+    "loss of appetite": [
+      "fever",
+      "weight loss",
+      "lethargy",
+      "depression",
+      "diarrhea",
+      "coughing"
+    ],
+    "loss of appettite": [
+      "lethargy",
+      "nasal discharge",
+      "strong cough",
+      "coughing",
+      "death",
+      "diarrhea"
+    ],
+    "loss of eat": [
+      "difficulty in breathing",
+      "lameness",
+      "lethargy",
+      "neurologic abnormalities",
+      "skin issue",
+      "swelling"
+    ],
+    "lossened teeth": [
+      "bloody drool",
+      "facial swelling",
+      "unable to eat",
+      "abdominal pain"
+    ],
+    "lying down": [
+      "dullness",
+      "urination",
+      "colic",
+      "depression",
+      "discharge",
+      "fever"
+    ],
+    "malpresentation": [
+      "death",
+      "abdominal pain",
+      "bottle jaw",
+      "diarrhea",
+      "fetopelvic dispropotion",
+      "loss of appetite"
+    ],
+    "mortality": [
+      "anemia",
+      "bloody",
+      "coughing",
+      "fever",
+      "muscle aches",
+      "nasal discharge"
+    ],
+    "muscle aches": [
+      "fever",
+      "lethargy",
+      "chest pain",
+      "loss of appetite",
+      "mortality"
+    ],
+    "muscle pain": [
+      "diarrhea",
+      "blindness",
+      "fever",
+      "upset stomach",
+      "vomiting"
+    ],
+    "muscular spasms": [
+      "death",
+      "pain",
+      "weight loss"
+    ],
+    "nasal discharge": [
+      "fever",
+      "lethargy",
+      "coughing",
+      "sneezing",
+      "loss of appetite",
+      "depression"
+    ],
+    "nausea": [
+      "vomiting",
+      "diarrhea",
+      "fever",
+      "loss of appetite",
+      "abdominal discomfort",
+      "chills"
+    ],
+    "neck paralysis": [
+      "diarrhea",
+      "difficulty in breathing",
+      "lethargy",
+      "pain",
+      "ruffled feathers",
+      "weight loss"
+    ],
+    "neurologic abnormalities": [
+      "difficulty in breathing",
+      "fever",
+      "lethargy",
+      "bloody discharge",
+      "immediate death",
+      "lameness"
+    ],
+    "normal appetite": [
+      "diarrhea",
+      "pain",
+      "weight loss"
+    ],
+    "pain": [
+      "fever",
+      "weight loss",
+      "diarrhea",
+      "loss of appetite",
+      "death",
+      "swelling"
+    ],
+    "pain on face": [
+      "greenish yellow nasal discharge",
+      "lack of pigmentation",
+      "lethargy",
+      "sneezing",
+      "vomiting"
+    ],
+    "painfull": [
+      "nasal discharge",
+      "coughing",
+      "broken bones",
+      "swelling on leg",
+      "difficulty in breathing",
+      "fever"
+    ],
+    "paralysis": [
+      "convulsion",
+      "death",
+      "depression",
+      "diarrhea",
+      "lethargy",
+      "paresis"
+    ],
+    "paresis": [
+      "coughing",
+      "diarrhea",
+      "lethargy",
+      "paralysis",
+      "shortness of breath",
+      "stomach cramps"
+    ],
+    "pneumonia": [
+      "fever",
+      "pain",
+      "congestion",
+      "jaundice",
+      "lession on the skin",
+      "lethargy"
+    ],
+    "rapid pulse and heart rates": [
+      "depression",
+      "fever",
+      "lameness",
+      "loss of appetite",
+      "death",
+      "trembling"
+    ],
+    "red skin": [
+      "lameness",
+      "loss of appetite",
+      "pain"
+    ],
+    "redness": [
+      "pain",
+      "heat",
+      "swelling on leg"
+    ],
+    "reduce growth": [
+      "fever",
+      "anemia",
+      "dullness",
+      "edema in lower jaw",
+      "kid moratality",
+      "lethargy"
+    ],
+    "respiratory distress": [
+      "fever",
+      "death",
+      "nasal discharge",
+      "hyperesthesia",
+      "diarrhea",
+      "pain"
+    ],
+    "restlessness": [
+      "lethargy",
+      "pain",
+      "death",
+      "fever",
+      "loss of appetite",
+      "stumbling"
+    ],
+    "ruffled feathers": [
+      "diarrhea",
+      "loss of appetite",
+      "depression",
+      "difficulty in breathing",
+      "lethargy",
+      "neck paralysis"
+    ],
+    "scabs": [
+      "discharge from eye",
+      "fever",
+      "hair loss",
+      "pain",
+      "ulcer"
+    ],
+    "seizuers": [
+      "lethargy",
+      "convulsion",
+      "death",
+      "difficulty in breathing",
+      "fever",
+      "hyperesthesia"
+    ],
+    "seizures": [
+      "fever",
+      "coughing",
+      "ataxia",
+      "blindness",
+      "circling",
+      "diarrhea"
+    ],
+    "shortness of breath": [
+      "coughing",
+      "lethargy",
+      "loss of appetite",
+      "paresis",
+      "swollen abdomen",
+      "weight loss"
+    ],
+    "skin issue": [
+      "hair loss",
+      "lethargy",
+      "loss of eat",
+      "weight loss",
+      "wool loss"
+    ],
+    "skin rashes": [
+      "pain",
+      "lethargy",
+      "fever",
+      "weight loss",
+      "ataxia",
+      "death"
+    ],
+    "slow growth": [
+      "dejection",
+      "diarrhea",
+      "lesion",
+      "loss of appetite"
+    ],
+    "sneezing": [
+      "coughing",
+      "difficulty in breathing",
+      "fever",
+      "nasal discharge",
+      "lethargy",
+      "weight loss"
+    ],
+    "stiffness": [
+      "lethargy",
+      "diarrhea",
+      "fever",
+      "abdominal pain",
+      "depression",
+      "inability to stand"
+    ],
+    "stomach cramps": [
+      "diarrhea",
+      "fever",
+      "enteritis",
+      "lethargy",
+      "nausea",
+      "paralysis"
+    ],
+    "stop drinking": [
+      "change their normal behaviour",
+      "loss of appetite",
+      "pain",
+      "depression",
+      "lameness",
+      "weight loss"
+    ],
+    "strong cough": [
+      "lethargy",
+      "loss of appettite",
+      "nasal discharge",
+      "sneezing"
+    ],
+    "stumbling": [
+      "fever",
+      "weight loss",
+      "drooling",
+      "lethargy",
+      "loss of appetite",
+      "urination problem"
+    ],
+    "swelling": [
+      "pain",
+      "fever",
+      "weight loss",
+      "lameness",
+      "loss of appetite",
+      "death"
+    ],
+    "swelling of face or leg": [
+      "pain",
+      "depression",
+      "fever",
+      "loss of appetite",
+      "weight loss",
+      "coughing"
+    ],
+    "swelling on leg": [
+      "broken bones",
+      "nasal discharge",
+      "painfull",
+      "heat",
+      "pain",
+      "redness"
+    ],
+    "swollen abdomen": [
+      "diarrhea",
+      "difficulty in breathing",
+      "fever",
+      "lethargy",
+      "loss of appetite",
+      "shortness of breath"
+    ],
+    "swollen lymph nodes": [
+      "lethargy",
+      "depression",
+      "fever",
+      "nasal discharge",
+      "watery stool"
+    ],
+    "tenderness": [
+      "pain",
+      "swelling",
+      "bloody discharge",
+      "facial paralysis",
+      "weight loss"
+    ],
+    "tensemus": [
+      "diarrhea with muscus",
+      "flatulence",
+      "pain",
+      "watery stool"
+    ],
+    "thrist and urination": [
+      "difficulty in breathing",
+      "fever",
+      "enlarged lymph nodes or swelling",
+      "weight loss",
+      "lethargy",
+      "sneezing"
+    ],
+    "torticollis": [
+      "lethargy",
+      "pneumonia",
+      "swelling",
+      "weight loss"
+    ],
+    "trembling": [
+      "fever",
+      "death",
+      "difficulty breating",
+      "stumbling",
+      "convulsion",
+      "depression"
+    ],
+    "tremor": [
+      "behaviour change",
+      "coughing",
+      "loss of appetite",
+      "pain",
+      "weight loss"
+    ],
+    "twisted neck": [
+      "coughing",
+      "droopy wings",
+      "sneezing"
+    ],
+    "ulcer": [
+      "pain",
+      "depression",
+      "discharge from eye",
+      "fever",
+      "scabs",
+      "swelling"
+    ],
+    "unable to eat": [
+      "bloody drool",
+      "facial swelling",
+      "lossened teeth",
+      "abdominal pain"
+    ],
+    "unable to exercise": [
+      "difficulty in breathing",
+      "eye and skin change",
+      "fever",
+      "coughing",
+      "loss of appetite"
+    ],
+    "underdeveloped muscles": [
+      "hair loss"
+    ],
+    "upset stomach": [
+      "diarrhea",
+      "weight loss",
+      "anemia",
+      "coughing",
+      "loss of appetite",
+      "muscle pain"
+    ],
+    "urination": [
+      "lying down",
+      "discharge",
+      "dullness",
+      "stumbling"
+    ],
+    "urination problem": [
+      "drooling",
+      "lethargy",
+      "stumbling",
+      "weight loss"
+    ],
+    "uteria inertia": [
+      "death",
+      "fetopelvic dispropotion",
+      "pain",
+      "malpresentation"
+    ],
+    "vomiting": [
+      "diarrhea",
+      "loss of appetite",
+      "weight loss",
+      "fever",
+      "lethargy",
+      "dehydration"
+    ],
+    "watery stool": [
+      "diarrhea with muscus",
+      "flatulence",
+      "pain",
+      "tensemus",
+      "lethargy",
+      "swollen lymph nodes"
+    ],
+    "weakened legs": [
+      "fever",
+      "los of the ability to walk",
+      "lameness",
+      "weight loss"
+    ],
+    "weekness in the back legs": [
+      "loss of appetite",
+      "death",
+      "fever",
+      "hyperesthesia",
+      "respiratory distress"
+    ],
+    "weight loss": [
+      "fever",
+      "diarrhea",
+      "loss of appetite",
+      "lethargy",
+      "coughing",
+      "pain"
+    ],
+    "wheezing": [
+      "lethargy",
+      "coughing",
+      "loss of appetite",
+      "nasal discharge",
+      "seizuers",
+      "skin rashes"
+    ],
+    "wool loss": [
+      "swelling",
+      "death",
+      "loss of appetite",
+      "fever",
+      "pain",
+      "skin issue"
+    ]
+  },
   "target_kind": "risk",
   "classes": [
     "No",

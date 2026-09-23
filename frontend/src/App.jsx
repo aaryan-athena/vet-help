@@ -3,9 +3,11 @@ import { getSchema, postPredict } from './api'
 import SymptomForm from './components/SymptomForm'
 import Results from './components/Results'
 import ModelInfo from './components/ModelInfo'
+import ChatTriage from './components/ChatTriage'
+import BreedAdvisor from './components/BreedAdvisor'
 
 export default function App() {
-  const [tab, setTab] = useState('triage')
+  const [tab, setTab] = useState('chat')
   const [schema, setSchema] = useState(null)
   const [schemaError, setSchemaError] = useState(null)
   const [result, setResult] = useState(null)
@@ -46,18 +48,20 @@ export default function App() {
           </div>
         </div>
         <nav>
-          <button
-            className={tab === 'triage' ? 'tab active' : 'tab'}
-            onClick={() => setTab('triage')}
-          >
-            Triage
-          </button>
-          <button
-            className={tab === 'model' ? 'tab active' : 'tab'}
-            onClick={() => setTab('model')}
-          >
-            About the model
-          </button>
+          {[
+            ['chat', 'Chat triage'],
+            ['triage', 'Symptom form'],
+            ['breeds', 'Breed advisor'],
+            ['model', 'About the model'],
+          ].map(([key, label]) => (
+            <button
+              key={key}
+              className={tab === key ? 'tab active' : 'tab'}
+              onClick={() => setTab(key)}
+            >
+              {label}
+            </button>
+          ))}
         </nav>
       </header>
 
@@ -69,6 +73,8 @@ export default function App() {
       <main>
         {tab === 'model' ? (
           <ModelInfo />
+        ) : tab === 'breeds' ? (
+          <BreedAdvisor />
         ) : schemaError ? (
           <div className="card error">
             <h2>Backend unavailable</h2>
@@ -83,6 +89,8 @@ export default function App() {
           </div>
         ) : !schema ? (
           <div className="card skeleton">Loading input schema…</div>
+        ) : tab === 'chat' ? (
+          <ChatTriage schema={schema} />
         ) : (
           <div className="layout">
             <SymptomForm schema={schema} onSubmit={handleSubmit} busy={busy} />

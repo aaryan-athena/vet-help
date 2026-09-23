@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 RAW_CSV = ROOT / "data" / "data.csv"
+BREED_CSV = ROOT / "data" / "breedinfo.csv"
 PROCESSED_DIR = ROOT / "data" / "processed"
 ARTIFACT_DIR = ROOT / "ml" / "artifacts"
 REPORT_DIR = ROOT / "reports"
@@ -24,6 +25,7 @@ EVAL_REPORT_PATH = ARTIFACT_DIR / "evaluation_report.json"
 MODEL_INFO_PATH = ARTIFACT_DIR / "model_info.json"
 SHAP_GLOBAL_PATH = ARTIFACT_DIR / "shap_global.json"
 RUN_LOG_PATH = ARTIFACT_DIR / "runs.jsonl"
+BREED_ARTIFACT_PATH = ARTIFACT_DIR / "breeds.json"
 
 RANDOM_SEED = 42
 TEST_SIZE = 0.20
@@ -96,6 +98,14 @@ CORS_ORIGIN_REGEX = (
     r"https://.*\.vercel\.app"
     if os.environ.get("VETDX_CORS_ALLOW_VERCEL_PREVIEWS", "1") != "0"
     else None
+)
+
+BREED_CAVEAT = (
+    "Breed guidance is a starting point drawn from a 41-breed reference table, "
+    "not a farm plan. Real yield depends on feed, water, housing, herd health "
+    "and management far more than on breed alone, and local availability, "
+    "market access and extension support matter just as much. Confirm any "
+    "choice with your local veterinary or animal husbandry department."
 )
 
 DISCLAIMER = (
